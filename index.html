@@ -12,574 +12,655 @@
             box-sizing: border-box;
         }
 
-```
-    body {
-        font-family: 'Georgia', serif;
-        background: linear-gradient(135deg, #e8dcc4 0%, #d4c5a9 100%);
-        min-height: 100vh;
-        padding: 20px;
-        color: #4a4a4a;
-    }
-
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    header {
-        text-align: center;
-        margin-bottom: 40px;
-        padding: 30px;
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 20px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 {
-        font-size: 2.5em;
-        color: #6b7c59;
-        margin-bottom: 10px;
-    }
-
-    .year {
-        font-size: 1.2em;
-        color: #8b8165;
-        font-style: italic;
-    }
-
-    .add-resolution-section {
-        background: rgba(255, 255, 255, 0.95);
-        padding: 30px;
-        border-radius: 20px;
-        margin-bottom: 30px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    }
-
-    .add-resolution-section h2 {
-        color: #d4756f;
-        margin-bottom: 20px;
-        font-size: 1.5em;
-    }
-
-    .form-group {
-        margin-bottom: 20px;
-    }
-
-    label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: bold;
-        color: #5a5240;
-    }
-
-    input[type="text"], select {
-        width: 100%;
-        padding: 12px;
-        border: 2px solid #d9cdb3;
-        border-radius: 10px;
-        font-size: 1em;
-        font-family: 'Georgia', serif;
-        transition: border-color 0.3s;
-    }
-
-    input[type="text"]:focus, select:focus {
-        outline: none;
-        border-color: #7d8f6b;
-    }
-
-    .btn {
-        background: linear-gradient(135deg, #7d8f6b 0%, #6b7c59 100%);
-        color: white;
-        padding: 12px 30px;
-        border: none;
-        border-radius: 10px;
-        font-size: 1em;
-        cursor: pointer;
-        font-family: 'Georgia', serif;
-        transition: transform 0.2s, box-shadow 0.2s;
-        box-shadow: 0 4px 15px rgba(107, 124, 89, 0.3);
-    }
-
-    .btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(107, 124, 89, 0.4);
-    }
-
-    .categories-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 25px;
-        margin-top: 30px;
-    }
-
-    .category-card {
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 20px;
-        padding: 25px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    }
-
-    .category-header {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-        padding-bottom: 15px;
-        border-bottom: 2px solid #d9cdb3;
-    }
-
-    .category-icon {
-        font-size: 2em;
-        margin-right: 15px;
-    }
-
-    .category-title {
-        font-size: 1.4em;
-        color: #5a5240;
-        flex-grow: 1;
-    }
-
-    .resolution-item {
-        background: #f5f0e8;
-        padding: 15px;
-        border-radius: 12px;
-        margin-bottom: 15px;
-        border-left: 4px solid #7d8f6b;
-    }
-
-    .resolution-title {
-        font-weight: bold;
-        color: #4a4a4a;
-        margin-bottom: 8px;
-        font-size: 1.1em;
-    }
-
-    .resolution-frequency {
-        display: inline-block;
-        padding: 4px 10px;
-        background: #7d8f6b;
-        color: white;
-        border-radius: 12px;
-        font-size: 0.85em;
-        margin-bottom: 12px;
-    }
-
-    .progress-section {
-        margin-top: 15px;
-    }
-
-    .week-tracker, .month-tracker {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-top: 10px;
-    }
-
-    .week-box, .month-box {
-        width: 35px;
-        height: 35px;
-        border: 2px solid #d4c5a9;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.3s;
-        font-size: 0.8em;
-        font-weight: bold;
-        background: white;
-        position: relative;
-    }
-
-    .week-box:hover, .month-box:hover {
-        transform: scale(1.1);
-        border-color: #7d8f6b;
-    }
-
-    .week-box.completed, .month-box.completed {
-        background: linear-gradient(135deg, #a8c69f 0%, #8db382 100%);
-        border-color: #7a9c6f;
-        color: white;
-    }
-
-    .week-box.missed, .month-box.missed {
-        background: linear-gradient(135deg, #c9b8a3 0%, #b5a390 100%);
-        border-color: #a89680;
-        color: white;
-    }
-
-    .week-box.partial, .month-box.partial {
-        background: linear-gradient(135deg, #d4c896 0%, #c4b67d 100%);
-        border-color: #b5a76e;
-        color: white;
-    }
-
-    .has-value {
-        font-size: 0.7em;
-    }
-
-    .annual-checkbox {
-        margin-top: 15px;
-    }
-
-    .annual-checkbox label {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        font-weight: normal;
-        padding: 10px;
-        border-radius: 8px;
-        transition: background 0.3s;
-    }
-
-    .annual-checkbox label:hover {
-        background: rgba(212, 117, 111, 0.1);
-    }
-
-    .annual-checkbox input[type="checkbox"] {
-        width: 24px;
-        height: 24px;
-        margin-right: 10px;
-        cursor: pointer;
-    }
-
-    .stats-section {
-        background: rgba(255, 255, 255, 0.95);
-        padding: 25px;
-        border-radius: 20px;
-        margin-bottom: 30px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        text-align: center;
-    }
-
-    .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-        margin-top: 20px;
-    }
-
-    .stat-card {
-        background: linear-gradient(135deg, #f5f0e8 0%, #ebe3d5 100%);
-        padding: 20px;
-        border-radius: 15px;
-        border: 2px solid #d9cdb3;
-    }
-
-    .stat-number {
-        font-size: 2.5em;
-        color: #7d8f6b;
-        font-weight: bold;
-    }
-
-    .stat-label {
-        color: #5a5240;
-        margin-top: 5px;
-    }
-
-    .progress-bar {
-        width: 100%;
-        height: 10px;
-        background: #d9cdb3;
-        border-radius: 5px;
-        margin-top: 10px;
-        overflow: hidden;
-    }
-
-    .progress-fill {
-        height: 100%;
-        background: linear-gradient(135deg, #a8c69f 0%, #8db382 100%);
-        transition: width 0.3s;
-    }
-
-    .delete-btn {
-        background: #c9b8a3;
-        color: #5a5240;
-        padding: 6px 12px;
-        border: none;
-        border-radius: 6px;
-        font-size: 0.85em;
-        cursor: pointer;
-        margin-top: 10px;
-        transition: background 0.3s;
-    }
-
-    .delete-btn:hover {
-        background: #b5a390;
-    }
-
-    .empty-state {
-        text-align: center;
-        padding: 40px;
-        color: #8b8165;
-        font-style: italic;
-    }
-
-    .modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 1000;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .modal.active {
-        display: flex;
-    }
-
-    .modal-content {
-        background: white;
-        padding: 30px;
-        border-radius: 20px;
-        max-width: 400px;
-        width: 90%;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .modal-content h3 {
-        color: #7d8f6b;
-        margin-bottom: 15px;
-    }
-
-    .modal-buttons {
-        display: flex;
-        gap: 10px;
-        margin-top: 20px;
-    }
-
-    .btn-secondary {
-        background: #e0d5c7;
-        color: #6b5b4d;
-    }
-
-    .btn-secondary:hover {
-        background: #d4c5b7;
-    }
-
-    .legend {
-        display: flex;
-        gap: 15px;
-        margin-top: 10px;
-        flex-wrap: wrap;
-        font-size: 0.85em;
-    }
-
-    .legend-item {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-    }
-
-    .legend-box {
-        width: 20px;
-        height: 20px;
-        border-radius: 4px;
-    }
-
-    .legend-completed {
-        background: linear-gradient(135deg, #a8c69f 0%, #8db382 100%);
-    }
-
-    .legend-partial {
-        background: linear-gradient(135deg, #d4c896 0%, #c4b67d 100%);
-    }
-
-    .legend-missed {
-        background: linear-gradient(135deg, #c9b8a3 0%, #b5a390 100%);
-    }
-
-    .goal-input-section {
-        margin-top: 10px;
-        padding: 10px;
-        background: rgba(125, 143, 107, 0.1);
-        border-radius: 8px;
-    }
-
-    .goal-input-section label {
-        font-size: 0.9em;
-        margin-bottom: 5px;
-    }
-
-    .goal-input-section input {
-        margin-top: 5px;
-        padding: 8px;
-    }
-
-    .entries-section {
-        margin-top: 15px;
-        padding: 12px;
-        background: rgba(125, 143, 107, 0.05);
-        border-radius: 8px;
-        border: 1px solid #d9cdb3;
-    }
-
-    .entries-section h4 {
-        color: #5a5240;
-        margin-bottom: 10px;
-        font-size: 1em;
-    }
-
-    .entry-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 8px;
-        background: white;
-        border-radius: 6px;
-        margin-bottom: 6px;
-        font-size: 0.9em;
-    }
-
-    .entry-delete {
-        background: #c9b8a3;
-        color: white;
-        border: none;
-        padding: 4px 8px;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 0.8em;
-    }
-
-    .entry-delete:hover {
-        background: #b5a390;
-    }
-
-    .add-entry-btn {
-        background: #8b8165;
-        color: white;
-        padding: 6px 12px;
-        border: none;
-        border-radius: 6px;
-        font-size: 0.85em;
-        cursor: pointer;
-        margin-top: 8px;
-        width: 100%;
-    }
-
-    .add-entry-btn:hover {
-        background: #7a7158;
-    }
-</style>
-```
-
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #e8dcc4 0%, #d4c5a9 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #4a4a4a;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #6b7c59;
+            margin-bottom: 10px;
+        }
+
+        .year {
+            font-size: 1.2em;
+            color: #8b8165;
+            font-style: italic;
+        }
+
+        .add-resolution-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .add-resolution-section h2 {
+            color: #d4756f;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #5a5240;
+        }
+
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #d9cdb3;
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Georgia', serif;
+            transition: border-color 0.3s;
+            background: white;
+        }
+
+        input[type="text"]:focus, input[type="number"]:focus, select:focus {
+            outline: none;
+            border-color: #7d8f6b;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #7d8f6b 0%, #6b7c59 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            font-family: 'Georgia', serif;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(107, 124, 89, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(107, 124, 89, 0.4);
+        }
+
+        .categories-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .category-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #d9cdb3;
+        }
+
+        .category-icon {
+            font-size: 2em;
+            margin-right: 15px;
+        }
+
+        .category-title {
+            font-size: 1.4em;
+            color: #5a5240;
+            flex-grow: 1;
+        }
+
+        .resolution-item {
+            background: #f5f0e8;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border-left: 4px solid #7d8f6b;
+        }
+
+        .resolution-title {
+            font-weight: bold;
+            color: #4a4a4a;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .resolution-frequency {
+            display: inline-block;
+            padding: 4px 10px;
+            background: #7d8f6b;
+            color: white;
+            border-radius: 12px;
+            font-size: 0.85em;
+            margin-bottom: 12px;
+        }
+
+        .progress-section {
+            margin-top: 15px;
+        }
+
+        .week-tracker, .month-tracker {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .week-box, .month-box {
+            width: 35px;
+            height: 35px;
+            border: 2px solid #d4c5a9;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.8em;
+            font-weight: bold;
+            background: white;
+            position: relative;
+        }
+
+        .week-box:hover, .month-box:hover {
+            transform: scale(1.1);
+            border-color: #7d8f6b;
+        }
+
+        .week-box.completed, .month-box.completed {
+            background: linear-gradient(135deg, #a8c69f 0%, #8db382 100%);
+            border-color: #7a9c6f;
+            color: white;
+        }
+
+        .week-box.missed, .month-box.missed {
+            background: linear-gradient(135deg, #c9b8a3 0%, #b5a390 100%);
+            border-color: #a89680;
+            color: white;
+        }
+
+        .week-box.partial, .month-box.partial {
+            background: linear-gradient(135deg, #d4c896 0%, #c4b67d 100%);
+            border-color: #b5a76e;
+            color: white;
+        }
+
+        .has-value {
+            font-size: 0.7em;
+        }
+
+        .annual-checkbox {
+            margin-top: 15px;
+        }
+
+        .annual-checkbox label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-weight: normal;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+
+        .annual-checkbox label:hover {
+            background: rgba(212, 117, 111, 0.1);
+        }
+
+        .annual-checkbox input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .stats-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #f5f0e8 0%, #ebe3d5 100%);
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid #d9cdb3;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            color: #7d8f6b;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            color: #5a5240;
+            margin-top: 5px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #d9cdb3;
+            border-radius: 5px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #a8c69f 0%, #8db382 100%);
+            transition: width 0.3s;
+        }
+
+        .delete-btn {
+            background: #c9b8a3;
+            color: #5a5240;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.85em;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        .delete-btn:hover {
+            background: #b5a390;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #8b8165;
+            font-style: italic;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 450px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-content h3 {
+            color: #7d8f6b;
+            margin-bottom: 15px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-secondary {
+            background: #e0d5c7;
+            color: #6b5b4d;
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background: #d4c5b7;
+        }
+
+        .legend {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+            font-size: 0.85em;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .legend-box {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+
+        .legend-completed {
+            background: linear-gradient(135deg, #a8c69f 0%, #8db382 100%);
+        }
+
+        .legend-partial {
+            background: linear-gradient(135deg, #d4c896 0%, #c4b67d 100%);
+        }
+
+        .legend-missed {
+            background: linear-gradient(135deg, #c9b8a3 0%, #b5a390 100%);
+        }
+
+        .goal-input-section {
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(125, 143, 107, 0.1);
+            border-radius: 8px;
+        }
+
+        .goal-input-section label {
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .goal-input-section input {
+            margin-top: 5px;
+            padding: 8px;
+        }
+
+        .entries-section {
+            margin-top: 15px;
+            padding: 12px;
+            background: rgba(125, 143, 107, 0.05);
+            border-radius: 8px;
+            border: 1px solid #d9cdb3;
+        }
+
+        .entries-section h4 {
+            color: #5a5240;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .entry-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            background: white;
+            border-radius: 6px;
+            margin-bottom: 6px;
+            font-size: 0.9em;
+        }
+
+        .entry-delete {
+            background: #c9b8a3;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8em;
+        }
+
+        .entry-delete:hover {
+            background: #b5a390;
+        }
+
+        .add-entry-row {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .add-entry-row input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #d9cdb3;
+            border-radius: 6px;
+            font-family: 'Georgia', serif;
+            font-size: 0.9em;
+        }
+
+        .add-entry-row input:focus {
+            outline: none;
+            border-color: #7d8f6b;
+        }
+
+        .add-entry-btn {
+            background: #7d8f6b;
+            color: white;
+            padding: 6px 14px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.85em;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background 0.2s;
+        }
+
+        .add-entry-btn:hover {
+            background: #6b7c59;
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .quick-actions .btn {
+            flex: 1;
+            padding: 10px;
+            font-size: 0.95em;
+        }
+
+        .modal-period-label {
+            color: #8b8165;
+            font-style: italic;
+            margin-bottom: 18px;
+            font-size: 0.95em;
+        }
+
+        .tally-display {
+            text-align: center;
+            padding: 12px;
+            background: rgba(125, 143, 107, 0.08);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #d9cdb3;
+        }
+
+        .tally-number {
+            font-size: 2em;
+            color: #6b7c59;
+            font-weight: bold;
+        }
+
+        .tally-goal {
+            color: #8b8165;
+            font-size: 0.9em;
+        }
+
+        .tally-bar-bg {
+            width: 100%;
+            height: 12px;
+            background: #d9cdb3;
+            border-radius: 6px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .tally-bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.4s, background 0.4s;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>✨ My Resolution Tracker ✨</h1>
-            <p class="year">2026 - A Year of Growth</p>
+            <h1>My Resolution Tracker</h1>
+            <p class="year">2026 — A Year of Growth</p>
         </header>
 
-```
+        <div class="stats-section">
+            <h2 style="color: #d4756f; margin-bottom: 10px;">Your Progress</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalResolutions">0</div>
+                    <div class="stat-label">Total Resolutions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="completionRate">0%</div>
+                    <div class="stat-label">Overall Completion</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="overallProgress" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="currentWeek">1</div>
+                    <div class="stat-label">Current Week</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="add-resolution-section">
+            <h2>Add New Resolution</h2>
+            <div class="form-group">
+                <label>What's your resolution?</label>
+                <input type="text" id="resolutionText" placeholder="e.g., Eat 30 fruits and veg per week">
+            </div>
+            <div class="form-group">
+                <label>How often will you track it?</label>
+                <select id="frequency">
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="annual">Annual Goal</option>
+                </select>
+            </div>
+            <div class="goal-input-section">
+                <label>Set a numerical goal (e.g. 30 for "eat 30 fruits &amp; veg")</label>
+                <input type="number" id="goalValue" placeholder="Leave blank if not needed">
+            </div>
+            <button class="btn" onclick="addResolution()" style="margin-top: 15px;">Add Resolution</button>
+        </div>
+
+        <div class="categories-container" id="categoriesContainer"></div>
+    </div>
+
+    <!-- PROGRESS MODAL -->
     <div class="modal" id="progressModal">
         <div class="modal-content">
             <h3 id="modalTitle">Track Progress</h3>
-            <p id="modalDescription"></p>
-            <div class="form-group">
-                <label>Quick Action:</label>
-                <div style="display: flex; gap: 10px; margin-bottom: 15px;">
-                    <button class="btn" onclick="setModalValue('completed')" style="flex: 1;">✓ Fully Achieved</button>
-                    <button class="btn btn-secondary" onclick="setModalValue('missed')" style="flex: 1;">✗ Missed</button>
-                </div>
+            <p class="modal-period-label" id="modalDescription"></p>
+
+            <!-- Tally display (shown when there's a goal) -->
+            <div class="tally-display" id="tallyDisplay" style="display:none;">
+                <div class="tally-number" id="tallyNumber">0 <span style="font-size:0.5em; color:#8b8165;" id="tallyGoalLabel">/ 30</span></div>
+                <div class="tally-goal" id="tallyGoalText">out of your goal</div>
+                <div class="tally-bar-bg"><div class="tally-bar-fill" id="tallyBarFill" style="width:0%;"></div></div>
             </div>
-            <div class="form-group" id="valueInputSection">
-                <label>Or enter your actual progress:</label>
-                <input type="number" id="progressValue" placeholder="e.g., 25 if you got 25/30">
-                <input type="number" id="progressGoal" placeholder="Your goal (e.g., 30)" style="margin-top: 10px;">
-            </div>
-            
+
+            <!-- Entry log (the "what did you eat?" list) -->
             <div class="entries-section" id="entriesSection">
-                <h4>📝 Detailed Log <span style="font-weight: normal; font-size: 0.9em;">(optional)</span></h4>
+                <h4>Log an entry</h4>
                 <div id="entriesList"></div>
-                <input type="text" id="newEntryText" placeholder="e.g., 'Ran 5k' or 'Apple'" style="width: 100%; margin-top: 8px; padding: 8px; border: 1px solid #d9cdb3; border-radius: 6px;">
-                <button class="add-entry-btn" onclick="addEntry()">+ Add Entry</button>
-            </div>
-            
-            <div class="modal-buttons">
-                <button class="btn" onclick="saveProgress()" style="flex: 1;">Save Progress</button>
-                <button class="btn btn-secondary" onclick="closeModal()" style="flex: 1;">Cancel</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="stats-section">
-        <h2 style="color: #d4756f; margin-bottom: 10px;">Your Progress</h2>
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number" id="totalResolutions">0</div>
-                <div class="stat-label">Total Resolutions</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="completionRate">0%</div>
-                <div class="stat-label">Overall Completion</div>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="overallProgress" style="width: 0%"></div>
+                <div class="add-entry-row">
+                    <input type="text" id="newEntryText" placeholder="e.g. Apple, Broccoli...">
+                    <button class="add-entry-btn" onclick="addEntry()">+ Add</button>
                 </div>
             </div>
-            <div class="stat-card">
-                <div class="stat-number" id="currentWeek">1</div>
-                <div class="stat-label">Current Week</div>
+
+            <!-- Quick action: mark fully done or missed (no goal set) -->
+            <div id="quickActionsSection" style="margin-top:18px;">
+                <div class="quick-actions">
+                    <button class="btn" onclick="setModalValue('completed')">Fully Achieved</button>
+                    <button class="btn btn-secondary" onclick="setModalValue('missed')">Missed</button>
+                </div>
+            </div>
+
+            <div class="modal-buttons">
+                <button class="btn" onclick="saveProgress()" style="flex:1;">Save</button>
+                <button class="btn btn-secondary" onclick="closeModal()" style="flex:1;">Cancel</button>
             </div>
         </div>
     </div>
-
-    <div class="add-resolution-section">
-        <h2>➕ Add New Resolution</h2>
-        <div class="form-group">
-            <label>What's your resolution?</label>
-            <input type="text" id="resolutionText" placeholder="e.g., Exercise 4 times a week">
-        </div>
-        <div class="form-group">
-            <label>How often will you track it?</label>
-            <select id="frequency">
-                <option value="weekly">Weekly</option>
-                <option value="monthly">Monthly</option>
-                <option value="annual">Annual</option>
-            </select>
-        </div>
-        <div class="goal-input-section">
-            <label>Optional: Set a numerical goal (e.g., 30 for "eat 30 fruits & veg")</label>
-            <input type="number" id="goalValue" placeholder="Leave blank if not applicable">
-        </div>
-        <button class="btn" onclick="addResolution()">Add Resolution</button>
-    </div>
-
-    <div class="categories-container" id="categoriesContainer">
-        <!-- Categories will be dynamically added here -->
-    </div>
-</div>
 
 <script>
-    // Category definitions with icons and keywords
-    const categories = {
+    // ---------------------------------------------------------------
+    // CATEGORY DEFINITIONS
+    // ---------------------------------------------------------------
+    var categories = {
         'lifestyle-health': {
             name: 'Lifestyle & Health',
             icon: '🌱',
-            keywords: ['exercise', 'workout', 'fitness', 'health', 'gym', 'run', 'yoga', 'diet', 'eat', 'food', 'veg', 'fruit', 'sleep', 'water', 'meditation', 'mindfulness', 'walk']
+            keywords: ['exercise','workout','fitness','health','gym','run','yoga','diet','eat','food','veg','fruit','sleep','water','meditation','mindfulness','walk','step','steps']
         },
         'learning': {
             name: 'Learning & Growth',
             icon: '📚',
-            keywords: ['learn', 'study', 'course', 'read', 'book', 'language', 'skill', 'practice', 'education', 'training', 'lesson', 'class', 'wset', 'wine']
+            keywords: ['learn','study','course','read','book','language','skill','practice','education','training','lesson','class','wset','wine','spanish','french','italian']
         },
         'projects': {
             name: 'Projects & Creativity',
             icon: '🎨',
-            keywords: ['project', 'build', 'create', 'make', 'write', 'art', 'music', 'craft', 'design', 'develop', 'code', 'programming']
+            keywords: ['project','build','create','make','write','art','music','craft','design','develop','code','programming','blog','journal']
         },
         'career': {
             name: 'Career & Finance',
             icon: '💼',
-            keywords: ['work', 'job', 'career', 'business', 'money', 'save', 'invest', 'finance', 'professional', 'network', 'meeting']
+            keywords: ['work','job','career','business','money','save','invest','finance','professional','network','meeting','budget']
         },
         'relationships': {
             name: 'Relationships & Social',
             icon: '💝',
-            keywords: ['friend', 'family', 'relationship', 'social', 'connect', 'call', 'visit', 'date', 'meet', 'people', 'community']
+            keywords: ['friend','family','relationship','social','connect','call','visit','date','meet','people','community']
         },
         'personal': {
             name: 'Personal & Other',
@@ -588,138 +669,131 @@
         }
     };
 
-    let resolutions = JSON.parse(localStorage.getItem('resolutions')) || [];
-    let currentResolution = null;
-    let currentPeriod = null;
-    let currentEntries = [];
+    // ---------------------------------------------------------------
+    // STATE
+    // ---------------------------------------------------------------
+    var resolutions = [];
+    var currentResolution = null;
+    var currentPeriod = null;
+    var currentEntries = [];   // live copy while modal is open
 
-    function categorizeResolution(text) {
-        const lowerText = text.toLowerCase();
-        
-        for (let [key, category] of Object.entries(categories)) {
-            if (key === 'personal') continue; // Skip 'personal' for now, it's the default
-            
-            for (let keyword of category.keywords) {
-                if (lowerText.includes(keyword)) {
-                    return key;
-                }
-            }
+    // ---------------------------------------------------------------
+    // LOAD / SAVE
+    // ---------------------------------------------------------------
+    function loadResolutions() {
+        try {
+            var raw = localStorage.getItem('resolutions');
+            resolutions = raw ? JSON.parse(raw) : [];
+        } catch(e) {
+            console.error('Load error', e);
+            resolutions = [];
         }
-        
-        return 'personal'; // Default category
     }
 
-    function addResolution() {
-        const text = document.getElementById('resolutionText').value.trim();
-        const frequency = document.getElementById('frequency').value;
-        const goalValue = document.getElementById('goalValue').value;
-
-        if (!text) {
-            alert('Please enter a resolution!');
-            return;
+    function saveResolutions() {
+        try {
+            localStorage.setItem('resolutions', JSON.stringify(resolutions));
+        } catch(e) {
+            console.error('Save error – storage may be full', e);
         }
+    }
 
-        const category = categorizeResolution(text);
-        
-        const resolution = {
+    // ---------------------------------------------------------------
+    // CATEGORIZE
+    // ---------------------------------------------------------------
+    function categorizeResolution(text) {
+        var lower = text.toLowerCase();
+        var keys = Object.keys(categories);
+        for (var i = 0; i < keys.length; i++) {
+            var key = keys[i];
+            if (key === 'personal') continue;
+            var kws = categories[key].keywords;
+            for (var j = 0; j < kws.length; j++) {
+                if (lower.indexOf(kws[j]) !== -1) return key;
+            }
+        }
+        return 'personal';
+    }
+
+    // ---------------------------------------------------------------
+    // ADD RESOLUTION
+    // ---------------------------------------------------------------
+    function addResolution() {
+        var text = document.getElementById('resolutionText').value.trim();
+        var frequency = document.getElementById('frequency').value;
+        var goalRaw = document.getElementById('goalValue').value.trim();
+
+        if (!text) { alert('Please enter a resolution!'); return; }
+
+        var resolution = {
             id: Date.now(),
             text: text,
             frequency: frequency,
-            category: category,
-            goal: goalValue ? parseInt(goalValue) : null,
-            progress: {}
+            category: categorizeResolution(text),
+            goal: goalRaw ? parseInt(goalRaw, 10) : null,
+            progress: {}          // key → value (see below)
         };
 
-        // Initialize progress tracking based on frequency
+        // Initialise all slots to null
         if (frequency === 'weekly') {
-            for (let i = 1; i <= 52; i++) {
-                resolution.progress[`week-${i}`] = null;
-            }
+            for (var i = 1; i <= 52; i++) resolution.progress['week-' + i] = null;
         } else if (frequency === 'monthly') {
-            for (let i = 1; i <= 12; i++) {
-                resolution.progress[`month-${i}`] = null;
-            }
-        } else if (frequency === 'annual') {
+            for (var i = 1; i <= 12; i++) resolution.progress['month-' + i] = null;
+        } else {
             resolution.progress['annual'] = null;
         }
 
         resolutions.push(resolution);
         saveResolutions();
-        
+
         document.getElementById('resolutionText').value = '';
         document.getElementById('goalValue').value = '';
         renderResolutions();
     }
 
-    function addEntry() {
-        const entryText = document.getElementById('newEntryText').value.trim();
-        if (!entryText) return;
-        
-        currentEntries.push(entryText);
-        document.getElementById('newEntryText').value = '';
-        renderEntries();
-    }
-
-    function removeEntry(index) {
-        currentEntries.splice(index, 1);
-        renderEntries();
-    }
-
-    function renderEntries() {
-        const entriesList = document.getElementById('entriesList');
-        if (currentEntries.length === 0) {
-            entriesList.innerHTML = '<p style="color: #8b8165; font-size: 0.9em; font-style: italic;">No entries yet</p>';
-            return;
-        }
-        
-        let html = '';
-        currentEntries.forEach((entry, index) => {
-            html += `
-                <div class="entry-item">
-                    <span>${entry}</span>
-                    <button class="entry-delete" onclick="removeEntry(${index})">×</button>
-                </div>
-            `;
-        });
-        entriesList.innerHTML = html;
-    }
-
+    // ---------------------------------------------------------------
+    // MODAL – OPEN / CLOSE
+    // ---------------------------------------------------------------
     function openProgressModal(resolutionId, period) {
-        currentResolution = resolutions.find(r => r.id === resolutionId);
-        currentPeriod = period;
-        
+        // find resolution
+        currentResolution = null;
+        for (var i = 0; i < resolutions.length; i++) {
+            if (resolutions[i].id === resolutionId) { currentResolution = resolutions[i]; break; }
+        }
         if (!currentResolution) return;
+        currentPeriod = period;
 
-        const modal = document.getElementById('progressModal');
-        document.getElementById('modalTitle').textContent = `Track: ${currentResolution.text}`;
-        
-        let periodText = period;
-        if (period.startsWith('week-')) {
-            periodText = `Week ${period.split('-')[1]}`;
-        } else if (period.startsWith('month-')) {
-            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-            periodText = months[parseInt(period.split('-')[1]) - 1];
-        }
-        
-        document.getElementById('modalDescription').textContent = `How did you do for ${periodText}?`;
-        
-        // Pre-fill if there's existing data
-        const existing = currentResolution.progress[period];
-        currentEntries = [];
-        
-        if (existing && typeof existing === 'object' && existing.value !== undefined) {
-            document.getElementById('progressValue').value = existing.value || '';
-            document.getElementById('progressGoal').value = existing.goal || currentResolution.goal || '';
-            if (existing.entries && Array.isArray(existing.entries)) {
-                currentEntries = [...existing.entries];
-            }
+        // title & period label
+        document.getElementById('modalTitle').textContent = currentResolution.text;
+
+        var periodText = period;
+        if (period.indexOf('week-') === 0)  periodText = 'Week ' + period.split('-')[1];
+        else if (period.indexOf('month-') === 0) {
+            var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+            periodText = months[parseInt(period.split('-')[1], 10) - 1];
         } else {
-            document.getElementById('progressValue').value = '';
-            document.getElementById('progressGoal').value = currentResolution.goal || '';
+            periodText = 'Annual';
         }
-        
+        document.getElementById('modalDescription').textContent = 'Logging for: ' + periodText;
+
+        // restore existing data into live state
+        var existing = currentResolution.progress[period];
+        currentEntries = [];
+        if (existing && typeof existing === 'object' && existing.entries) {
+            currentEntries = existing.entries.slice(); // copy
+        }
+
+        // tally display
+        var goal = currentResolution.goal;
+        if (goal) {
+            document.getElementById('tallyDisplay').style.display = 'block';
+            updateTallyDisplay();
+        } else {
+            document.getElementById('tallyDisplay').style.display = 'none';
+        }
+
         renderEntries();
-        modal.classList.add('active');
+        document.getElementById('progressModal').classList.add('active');
     }
 
     function closeModal() {
@@ -729,251 +803,278 @@
         currentEntries = [];
     }
 
-    function setModalValue(type) {
-        if (type === 'completed') {
-            currentResolution.progress[currentPeriod] = true;
-        } else if (type === 'missed') {
-            currentResolution.progress[currentPeriod] = false;
+    // ---------------------------------------------------------------
+    // MODAL – ENTRY LIST
+    // ---------------------------------------------------------------
+    function addEntry() {
+        var txt = document.getElementById('newEntryText').value.trim();
+        if (!txt) return;
+        currentEntries.push(txt);
+        document.getElementById('newEntryText').value = '';
+        renderEntries();
+        updateTallyDisplay();
+    }
+
+    // allow pressing Enter to add
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && document.getElementById('newEntryText') === document.activeElement) {
+            e.preventDefault();
+            addEntry();
         }
+    });
+
+    function removeEntry(index) {
+        currentEntries.splice(index, 1);
+        renderEntries();
+        updateTallyDisplay();
+    }
+
+    function renderEntries() {
+        var container = document.getElementById('entriesList');
+        if (currentEntries.length === 0) {
+            container.innerHTML = '<p style="color:#8b8165; font-size:0.9em; font-style:italic; margin-bottom:6px;">Nothing logged yet</p>';
+            return;
+        }
+        var html = '';
+        for (var i = 0; i < currentEntries.length; i++) {
+            html += '<div class="entry-item"><span>' + escapeHtml(currentEntries[i]) + '</span>' +
+                    '<button class="entry-delete" onclick="removeEntry(' + i + ')">×</button></div>';
+        }
+        container.innerHTML = html;
+    }
+
+    // ---------------------------------------------------------------
+    // MODAL – TALLY BAR
+    // ---------------------------------------------------------------
+    function updateTallyDisplay() {
+        var goal = currentResolution ? currentResolution.goal : 0;
+        var count = currentEntries.length;
+        var pct = goal ? Math.min(Math.round((count / goal) * 100), 100) : 0;
+
+        document.getElementById('tallyNumber').innerHTML = count +
+            ' <span style="font-size:0.5em; color:#8b8165;">/ ' + (goal || '?') + '</span>';
+        document.getElementById('tallyGoalText').textContent = pct >= 100 ? 'Goal reached!' : 'out of your goal';
+
+        var bar = document.getElementById('tallyBarFill');
+        bar.style.width = pct + '%';
+        // colour transitions: red-ish → amber → green
+        if (pct >= 100)      bar.style.background = 'linear-gradient(135deg, #a8c69f, #8db382)';
+        else if (pct >= 60)  bar.style.background = 'linear-gradient(135deg, #d4c896, #c4b67d)';
+        else                 bar.style.background = 'linear-gradient(135deg, #c9b8a3, #b5a390)';
+    }
+
+    // ---------------------------------------------------------------
+    // MODAL – SAVE / QUICK SET
+    // ---------------------------------------------------------------
+    function setModalValue(type) {
+        // "Fully Achieved" / "Missed" quick buttons – only meaningful when there is NO goal
+        if (type === 'completed') currentResolution.progress[currentPeriod] = true;
+        else                      currentResolution.progress[currentPeriod] = false;
         saveResolutions();
         closeModal();
         renderResolutions();
     }
 
     function saveProgress() {
-        const valueInput = document.getElementById('progressValue').value;
-        const goalInput = document.getElementById('progressGoal').value;
-        
-        // If user entered a value or has entries, save as object
-        if (valueInput || currentEntries.length > 0) {
-            const value = valueInput ? parseInt(valueInput) : currentEntries.length;
-            const goal = goalInput ? parseInt(goalInput) : currentResolution.goal;
-            
+        // If entries exist, save as structured object; otherwise leave as quick-set or null
+        if (currentEntries.length > 0) {
+            var goal = currentResolution.goal;
             currentResolution.progress[currentPeriod] = {
-                value: value,
+                value: currentEntries.length,
                 goal: goal,
-                entries: currentEntries.length > 0 ? [...currentEntries] : undefined
+                entries: currentEntries.slice()
             };
-            
-            // Update the resolution's default goal if provided
-            if (goalInput) {
-                currentResolution.goal = parseInt(goalInput);
-            }
         }
-        
+        // If no entries but goal exists and user hasn't quick-set, keep null (no change)
         saveResolutions();
         closeModal();
         renderResolutions();
     }
 
-    function toggleProgress(resolutionId, period) {
-        openProgressModal(resolutionId, period);
-    }
-
-    function toggleAnnual(resolutionId) {
-        openProgressModal(resolutionId, 'annual');
-    }
-
-    function deleteResolution(resolutionId) {
-        if (confirm('Are you sure you want to delete this resolution?')) {
-            resolutions = resolutions.filter(r => r.id !== resolutionId);
-            saveResolutions();
-            renderResolutions();
-        }
-    }
-
-    function saveResolutions() {
-        localStorage.setItem('resolutions', JSON.stringify(resolutions));
-    }
-
-    function getCurrentWeek() {
-        const start = new Date(2026, 0, 1); // January 1, 2026
-        const now = new Date();
-        const diff = now - start;
-        const oneWeek = 1000 * 60 * 60 * 24 * 7;
-        return Math.floor(diff / oneWeek) + 1;
-    }
-
-    function calculateStats() {
-        const total = resolutions.length;
-        let totalPossible = 0;
-        let totalCompleted = 0;
-
-        resolutions.forEach(res => {
-            Object.values(res.progress).forEach(status => {
-                if (status !== null) {
-                    totalPossible++;
-                    if (status === true) {
-                        totalCompleted++;
-                    } else if (typeof status === 'object' && status.value !== undefined) {
-                        // For numerical tracking, count as completed if achieved goal
-                        if (status.goal && status.value >= status.goal) {
-                            totalCompleted++;
-                        } else if (status.value > 0) {
-                            // Partial credit for effort
-                            totalCompleted += 0.5;
-                        }
-                    }
-                }
-            });
-        });
-
-        const rate = totalPossible > 0 ? Math.round((totalCompleted / totalPossible) * 100) : 0;
-
-        document.getElementById('totalResolutions').textContent = total;
-        document.getElementById('completionRate').textContent = rate + '%';
-        document.getElementById('overallProgress').style.width = rate + '%';
-        document.getElementById('currentWeek').textContent = getCurrentWeek();
-    }
-
+    // ---------------------------------------------------------------
+    // RENDERING – BOXES
+    // ---------------------------------------------------------------
     function getStatusInfo(status) {
-        if (status === null) {
-            return { class: '', display: '' };
-        } else if (status === true) {
-            return { class: 'completed', display: '✓' };
-        } else if (status === false) {
-            return { class: 'missed', display: '✗' };
-        } else if (typeof status === 'object' && status.value !== undefined) {
-            const percentage = status.goal ? Math.round((status.value / status.goal) * 100) : 0;
-            if (percentage >= 100) {
-                return { class: 'completed has-value', display: `${status.value}` };
-            } else if (percentage >= 60) {
-                return { class: 'partial has-value', display: `${status.value}` };
-            } else {
-                return { class: 'missed has-value', display: `${status.value}` };
-            }
+        if (status === null || status === undefined) return { cls: '', display: '' };
+        if (status === true)  return { cls: 'completed', display: '✓' };
+        if (status === false) return { cls: 'missed',    display: '✗' };
+        // object with value
+        if (typeof status === 'object' && status.value !== undefined) {
+            var pct = status.goal ? Math.round((status.value / status.goal) * 100) : 50;
+            var cls = pct >= 100 ? 'completed' : (pct >= 60 ? 'partial' : 'missed');
+            return { cls: cls + ' has-value', display: String(status.value) };
         }
-        return { class: '', display: '' };
+        return { cls: '', display: '' };
     }
 
+    // ---------------------------------------------------------------
+    // RENDERING – MAIN
+    // ---------------------------------------------------------------
     function renderResolutions() {
-        const container = document.getElementById('categoriesContainer');
+        var container = document.getElementById('categoriesContainer');
         container.innerHTML = '';
 
-        // Group resolutions by category
-        const grouped = {};
-        resolutions.forEach(res => {
-            if (!grouped[res.category]) {
-                grouped[res.category] = [];
-            }
-            grouped[res.category].push(res);
-        });
+        // group by category
+        var grouped = {};
+        for (var i = 0; i < resolutions.length; i++) {
+            var cat = resolutions[i].category;
+            if (!grouped[cat]) grouped[cat] = [];
+            grouped[cat].push(resolutions[i]);
+        }
 
-        // Render each category
-        Object.keys(grouped).forEach(categoryKey => {
-            const category = categories[categoryKey];
-            const categoryResolutions = grouped[categoryKey];
+        var catKeys = Object.keys(grouped);
+        for (var c = 0; c < catKeys.length; c++) {
+            var categoryKey = catKeys[c];
+            var category = categories[categoryKey];
+            var items = grouped[categoryKey];
 
-            const card = document.createElement('div');
+            var card = document.createElement('div');
             card.className = 'category-card';
 
-            let html = `
-                <div class="category-header">
-                    <span class="category-icon">${category.icon}</span>
-                    <h3 class="category-title">${category.name}</h3>
-                </div>
-            `;
+            var html = '<div class="category-header">' +
+                '<span class="category-icon">' + category.icon + '</span>' +
+                '<h3 class="category-title">' + category.name + '</h3></div>';
 
-            categoryResolutions.forEach(res => {
-                html += `
-                    <div class="resolution-item">
-                        <div class="resolution-title">${res.text}</div>
-                        <span class="resolution-frequency">${res.frequency}</span>
-                        ${res.goal ? `<span class="resolution-frequency" style="background: #8b8165; margin-left: 5px;">Goal: ${res.goal}</span>` : ''}
-                `;
+            for (var r = 0; r < items.length; r++) {
+                var res = items[r];
+                html += '<div class="resolution-item">' +
+                    '<div class="resolution-title">' + escapeHtml(res.text) + '</div>' +
+                    '<span class="resolution-frequency">' + res.frequency + '</span>';
 
+                if (res.goal) html += ' <span class="resolution-frequency" style="background:#8b8165;">Goal: ' + res.goal + '</span>';
+
+                // --- weekly boxes ---
                 if (res.frequency === 'weekly') {
-                    html += '<div class="progress-section"><strong>Weekly Progress:</strong>';
-                    html += '<div class="legend"><div class="legend-item"><div class="legend-box legend-completed"></div><span>Achieved</span></div><div class="legend-item"><div class="legend-box legend-partial"></div><span>Close!</span></div><div class="legend-item"><div class="legend-box legend-missed"></div><span>Missed</span></div></div>';
-                    html += '<div class="week-tracker">';
-                    for (let i = 1; i <= 52; i++) {
-                        const status = res.progress[`week-${i}`];
-                        const statusInfo = getStatusInfo(status);
-                        let displayText = statusInfo.display || i;
-                        
-                        // Show tooltip with details for numerical values and entries
-                        let tooltip = '';
-                        if (typeof status === 'object' && status.value !== undefined) {
-                            let tooltipText = `${status.value}${status.goal ? '/' + status.goal : ''}`;
-                            if (status.entries && status.entries.length > 0) {
-                                tooltipText += '\n' + status.entries.join(', ');
-                            }
-                            tooltip = `title="${tooltipText}"`;
-                            displayText = status.value;
+                    html += '<div class="progress-section"><strong>Weekly Progress:</strong>' +
+                        '<div class="legend">' +
+                        '<div class="legend-item"><div class="legend-box legend-completed"></div><span>Achieved</span></div>' +
+                        '<div class="legend-item"><div class="legend-box legend-partial"></div><span>Close</span></div>' +
+                        '<div class="legend-item"><div class="legend-box legend-missed"></div><span>Missed</span></div></div>' +
+                        '<div class="week-tracker">';
+                    for (var w = 1; w <= 52; w++) {
+                        var status = res.progress['week-' + w];
+                        var info = getStatusInfo(status);
+                        var display = info.display || String(w);
+                        var title = '';
+                        if (typeof status === 'object' && status && status.entries) {
+                            title = ' title="' + escapeHtml(status.entries.join(', ')) + '"';
                         }
-                        
-                        html += `<div class="week-box ${statusInfo.class}" onclick="toggleProgress(${res.id}, 'week-${i}')" ${tooltip}>${displayText}</div>`;
+                        html += '<div class="week-box ' + info.cls + '" onclick="openProgressModal(' + res.id + ', \'week-' + w + '\')" ' + title + '>' + display + '</div>';
                     }
                     html += '</div></div>';
-                } else if (res.frequency === 'monthly') {
-                    html += '<div class="progress-section"><strong>Monthly Progress:</strong>';
-                    html += '<div class="legend"><div class="legend-item"><div class="legend-box legend-completed"></div><span>Achieved</span></div><div class="legend-item"><div class="legend-box legend-partial"></div><span>Close!</span></div><div class="legend-item"><div class="legend-box legend-missed"></div><span>Missed</span></div></div>';
-                    html += '<div class="month-tracker">';
-                    const months = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
-                    for (let i = 1; i <= 12; i++) {
-                        const status = res.progress[`month-${i}`];
-                        const statusInfo = getStatusInfo(status);
-                        let displayText = statusInfo.display || months[i-1];
-                        
-                        let tooltip = '';
-                        if (typeof status === 'object' && status.value !== undefined) {
-                            let tooltipText = `${status.value}${status.goal ? '/' + status.goal : ''}`;
-                            if (status.entries && status.entries.length > 0) {
-                                tooltipText += '\n' + status.entries.join(', ');
-                            }
-                            tooltip = `title="${tooltipText}"`;
-                            displayText = status.value;
+                }
+                // --- monthly boxes ---
+                else if (res.frequency === 'monthly') {
+                    var mLabels = ['J','F','M','A','M','J','J','A','S','O','N','D'];
+                    html += '<div class="progress-section"><strong>Monthly Progress:</strong>' +
+                        '<div class="legend">' +
+                        '<div class="legend-item"><div class="legend-box legend-completed"></div><span>Achieved</span></div>' +
+                        '<div class="legend-item"><div class="legend-box legend-partial"></div><span>Close</span></div>' +
+                        '<div class="legend-item"><div class="legend-box legend-missed"></div><span>Missed</span></div></div>' +
+                        '<div class="month-tracker">';
+                    for (var m = 1; m <= 12; m++) {
+                        var status = res.progress['month-' + m];
+                        var info = getStatusInfo(status);
+                        var display = info.display || mLabels[m - 1];
+                        var title = '';
+                        if (typeof status === 'object' && status && status.entries) {
+                            title = ' title="' + escapeHtml(status.entries.join(', ')) + '"';
                         }
-                        
-                        html += `<div class="month-box ${statusInfo.class}" onclick="toggleProgress(${res.id}, 'month-${i}')" ${tooltip}>${displayText}</div>`;
+                        html += '<div class="month-box ' + info.cls + '" onclick="openProgressModal(' + res.id + ', \'month-' + m + '\')" ' + title + '>' + display + '</div>';
                     }
                     html += '</div></div>';
-                } else if (res.frequency === 'annual') {
-                    const status = res.progress['annual'];
-                    const statusInfo = getStatusInfo(status);
-                    
-                    let statusText = 'Not yet tracked';
-                    if (status === true) {
-                        statusText = '✓ Completed!';
-                    } else if (status === false) {
-                        statusText = '✗ Not completed';
-                    } else if (typeof status === 'object' && status.value !== undefined) {
-                        statusText = `Progress: ${status.value}${status.goal ? '/' + status.goal : ''}`;
-                        if (status.entries && status.entries.length > 0) {
-                            statusText += ` (${status.entries.length} entries)`;
-                        }
-                        if (status.goal && status.value >= status.goal) {
-                            statusText = `✓ ${statusText}`;
-                        }
+                }
+                // --- annual button ---
+                else if (res.frequency === 'annual') {
+                    var aStatus = res.progress['annual'];
+                    var statusText = 'Not yet tracked';
+                    if (aStatus === true) statusText = 'Completed!';
+                    else if (aStatus === false) statusText = 'Not completed';
+                    else if (typeof aStatus === 'object' && aStatus && aStatus.value !== undefined) {
+                        statusText = 'Progress: ' + aStatus.value + (aStatus.goal ? '/' + aStatus.goal : '');
+                        if (aStatus.entries) statusText += ' (' + aStatus.entries.length + ' entries)';
+                        if (aStatus.goal && aStatus.value >= aStatus.goal) statusText = 'Completed! ' + statusText;
                     }
-                    
-                    html += `
-                        <div class="annual-checkbox">
-                            <button class="btn" onclick="toggleAnnual(${res.id})" style="width: 100%; margin-top: 10px;">
-                                Track Annual Progress: ${statusText}
-                            </button>
-                        </div>
-                    `;
+                    html += '<div class="annual-checkbox">' +
+                        '<button class="btn" onclick="openProgressModal(' + res.id + ', \'annual\')" style="width:100%; margin-top:10px;">' +
+                        'Track: ' + statusText + '</button></div>';
                 }
 
-                html += `<button class="delete-btn" onclick="deleteResolution(${res.id})">Delete</button></div>`;
-            });
+                html += '<button class="delete-btn" onclick="deleteResolution(' + res.id + ')">Delete</button></div>';
+            }
 
             card.innerHTML = html;
             container.appendChild(card);
-        });
+        }
 
         if (resolutions.length === 0) {
-            container.innerHTML = '<div class="empty-state">No resolutions yet! Add your first one above. 🌟</div>';
+            container.innerHTML = '<div class="empty-state">No resolutions yet. Add your first one above!</div>';
         }
 
         calculateStats();
     }
 
-    // Initial render
+    // ---------------------------------------------------------------
+    // DELETE
+    // ---------------------------------------------------------------
+    function deleteResolution(resolutionId) {
+        if (!confirm('Delete this resolution?')) return;
+        resolutions = resolutions.filter(function(r) { return r.id !== resolutionId; });
+        saveResolutions();
+        renderResolutions();
+    }
+
+    // ---------------------------------------------------------------
+    // STATS
+    // ---------------------------------------------------------------
+    function getCurrentWeek() {
+        var start = new Date(2026, 0, 1);
+        var now   = new Date();
+        var diff  = now - start;
+        return Math.max(1, Math.floor(diff / (1000 * 60 * 60 * 24 * 7)) + 1);
+    }
+
+    function calculateStats() {
+        var total = resolutions.length;
+        var totalPossible = 0, totalCompleted = 0;
+
+        for (var i = 0; i < resolutions.length; i++) {
+            var prog = resolutions[i].progress;
+            var keys = Object.keys(prog);
+            for (var j = 0; j < keys.length; j++) {
+                var s = prog[keys[j]];
+                if (s === null || s === undefined) continue;
+                totalPossible++;
+                if (s === true) { totalCompleted++; }
+                else if (typeof s === 'object' && s.value !== undefined) {
+                    if (s.goal && s.value >= s.goal) totalCompleted++;
+                    else if (s.value > 0) totalCompleted += 0.5;
+                }
+            }
+        }
+
+        var rate = totalPossible > 0 ? Math.round((totalCompleted / totalPossible) * 100) : 0;
+
+        document.getElementById('totalResolutions').textContent = total;
+        document.getElementById('completionRate').textContent   = rate + '%';
+        document.getElementById('overallProgress').style.width  = rate + '%';
+        document.getElementById('currentWeek').textContent      = getCurrentWeek();
+    }
+
+    // ---------------------------------------------------------------
+    // UTILITY
+    // ---------------------------------------------------------------
+    function escapeHtml(str) {
+        var div = document.createElement('div');
+        div.appendChild(document.createTextNode(str));
+        return div.innerHTML;
+    }
+
+    // ---------------------------------------------------------------
+    // BOOT
+    // ---------------------------------------------------------------
+    loadResolutions();
     renderResolutions();
 </script>
-```
-
 </body>
 </html>
