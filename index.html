@@ -94,17 +94,20 @@
         .btn {
             background: linear-gradient(135deg, #7d8f6b 0%, #6b7c59 100%);
             color: white;
-            padding: 12px 30px;
+            padding: 16px 30px;
             border: none;
             border-radius: 10px;
-            font-size: 1em;
+            font-size: 1.1em;
             cursor: pointer;
             font-family: 'Georgia', serif;
             transition: transform 0.2s, box-shadow 0.2s;
             box-shadow: 0 4px 15px rgba(107, 124, 89, 0.3);
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            min-height: 44px;
         }
 
-        .btn:hover {
+        .btn:hover, .btn:active {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(107, 124, 89, 0.4);
         }
@@ -161,10 +164,16 @@
             align-items: center;
             justify-content: space-between;
             user-select: none;
+            padding: 8px;
+            margin: -8px;
+            border-radius: 8px;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            min-height: 44px;
         }
 
-        .resolution-header:hover {
-            opacity: 0.8;
+        .resolution-header:hover, .resolution-header:active {
+            background: rgba(125, 143, 107, 0.1);
         }
 
         .collapse-icon {
@@ -227,8 +236,8 @@
         }
 
         .week-box, .month-box {
-            width: 35px;
-            height: 35px;
+            width: 40px;
+            height: 40px;
             border: 2px solid #d4c5a9;
             border-radius: 8px;
             display: flex;
@@ -236,13 +245,15 @@
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s;
-            font-size: 0.8em;
+            font-size: 0.85em;
             font-weight: bold;
             background: white;
             position: relative;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
-        .week-box:hover, .month-box:hover {
+        .week-box:hover, .month-box:hover, .week-box:active, .month-box:active {
             transform: scale(1.1);
             border-color: #7d8f6b;
         }
@@ -357,16 +368,19 @@
         .delete-btn {
             background: #c9b8a3;
             color: #5a5240;
-            padding: 6px 12px;
+            padding: 10px 16px;
             border: none;
             border-radius: 6px;
-            font-size: 0.85em;
+            font-size: 0.95em;
             cursor: pointer;
             margin-top: 10px;
             transition: background 0.3s;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            min-height: 44px;
         }
 
-        .delete-btn:hover {
+        .delete-btn:hover, .delete-btn:active {
             background: #b5a390;
         }
 
@@ -420,9 +434,13 @@
             background: #e0d5c7;
             color: #6b5b4d;
             box-shadow: none;
+            padding: 16px 30px;
+            min-height: 44px;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
-        .btn-secondary:hover {
+        .btn-secondary:hover, .btn-secondary:active {
             background: #d4c5b7;
         }
 
@@ -542,16 +560,19 @@
         .add-entry-btn {
             background: #7d8f6b;
             color: white;
-            padding: 6px 14px;
+            padding: 10px 18px;
             border: none;
             border-radius: 6px;
-            font-size: 0.85em;
+            font-size: 0.95em;
             cursor: pointer;
             white-space: nowrap;
             transition: background 0.2s;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            min-height: 44px;
         }
 
-        .add-entry-btn:hover {
+        .add-entry-btn:hover, .add-entry-btn:active {
             background: #6b7c59;
         }
 
@@ -695,14 +716,17 @@
 
         .template-card {
             background: #f5f0e8;
-            padding: 15px;
+            padding: 20px;
             border-radius: 12px;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
             border: 2px solid #d9cdb3;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            min-height: 100px;
         }
 
-        .template-card:hover {
+        .template-card:hover, .template-card:active {
             transform: translateY(-3px);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
@@ -1335,13 +1359,29 @@
             grouped[cat].push(resolutions[i]);
         }
 
+        // Always show categories even if empty to help with debugging
         var currentWeekNum = getCurrentWeek();
         var currentMonthNum = new Date().getMonth() + 1;
 
         var catKeys = Object.keys(grouped);
+        
+        // If no resolutions at all, show empty state
+        if (resolutions.length === 0) {
+            container.innerHTML = '<div class="empty-state">No resolutions yet. Add your first one above or try a template!</div>';
+            calculateStats();
+            return;
+        }
+        
         for (var c = 0; c < catKeys.length; c++) {
             var categoryKey = catKeys[c];
             var category = categories[categoryKey];
+            
+            // Safety check - make sure category exists
+            if (!category) {
+                console.error('Category not found:', categoryKey);
+                continue;
+            }
+            
             var items = grouped[categoryKey];
 
             var catCompleted = 0;
@@ -1455,10 +1495,6 @@
 
             card.innerHTML = html;
             container.appendChild(card);
-        }
-
-        if (resolutions.length === 0) {
-            container.innerHTML = '<div class="empty-state">No resolutions yet. Add your first one above or try a template!</div>';
         }
 
         calculateStats();
