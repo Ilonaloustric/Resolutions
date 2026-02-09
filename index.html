@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -71,7 +70,7 @@
             color: #5a5240;
         }
 
-        input[type="text"], input[type="number"], select {
+        input[type="text"], input[type="number"], input[type="file"], select, textarea {
             width: 100%;
             padding: 12px;
             border: 2px solid #d9cdb3;
@@ -82,7 +81,12 @@
             background: white;
         }
 
-        input[type="text"]:focus, input[type="number"]:focus, select:focus {
+        textarea {
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        input[type="text"]:focus, input[type="number"]:focus, select:focus, textarea:focus {
             outline: none;
             border-color: #7d8f6b;
         }
@@ -138,12 +142,50 @@
             flex-grow: 1;
         }
 
+        .category-stats {
+            font-size: 0.9em;
+            color: #8b8165;
+        }
+
         .resolution-item {
             background: #f5f0e8;
             padding: 15px;
             border-radius: 12px;
             margin-bottom: 15px;
             border-left: 4px solid #7d8f6b;
+        }
+
+        .resolution-header {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            user-select: none;
+        }
+
+        .resolution-header:hover {
+            opacity: 0.8;
+        }
+
+        .collapse-icon {
+            font-size: 1.2em;
+            transition: transform 0.3s;
+            color: #7d8f6b;
+        }
+
+        .collapse-icon.expanded {
+            transform: rotate(90deg);
+        }
+
+        .resolution-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .resolution-content.expanded {
+            max-height: 3000px;
+            transition: max-height 0.5s ease-in;
         }
 
         .resolution-title {
@@ -161,6 +203,16 @@
             border-radius: 12px;
             font-size: 0.85em;
             margin-bottom: 12px;
+        }
+
+        .streak-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background: linear-gradient(135deg, #d4756f, #c26660);
+            color: white;
+            border-radius: 12px;
+            font-size: 0.85em;
+            margin-left: 6px;
         }
 
         .progress-section {
@@ -193,6 +245,17 @@
         .week-box:hover, .month-box:hover {
             transform: scale(1.1);
             border-color: #7d8f6b;
+        }
+
+        .week-box.current, .month-box.current {
+            border: 3px solid #d4756f;
+            box-shadow: 0 0 10px rgba(212, 117, 111, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 10px rgba(212, 117, 111, 0.4); }
+            50% { box-shadow: 0 0 20px rgba(212, 117, 111, 0.6); }
         }
 
         .week-box.completed, .month-box.completed {
@@ -395,6 +458,11 @@
             background: linear-gradient(135deg, #c9b8a3 0%, #b5a390 100%);
         }
 
+        .legend-current {
+            border: 3px solid #d4756f;
+            background: white;
+        }
+
         .goal-input-section {
             margin-top: 10px;
             padding: 10px;
@@ -540,6 +608,160 @@
             border-radius: 6px;
             transition: width 0.4s, background 0.4s;
         }
+
+        .notes-section {
+            margin-top: 15px;
+        }
+
+        .notes-section textarea {
+            width: 100%;
+            min-height: 80px;
+            margin-top: 8px;
+        }
+
+        .photo-section {
+            margin-top: 15px;
+        }
+
+        .photo-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .photo-item {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid #d9cdb3;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-delete {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background: rgba(201, 184, 163, 0.9);
+            color: white;
+            border: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 0.8em;
+            line-height: 1;
+        }
+
+        .charts-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-container {
+            margin-top: 20px;
+            height: 300px;
+        }
+
+        .export-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .templates-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .template-card {
+            background: #f5f0e8;
+            padding: 15px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 2px solid #d9cdb3;
+        }
+
+        .template-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .template-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .template-title {
+            font-weight: bold;
+            color: #5a5240;
+            margin-bottom: 5px;
+        }
+
+        .template-desc {
+            font-size: 0.85em;
+            color: #8b8165;
+        }
+
+        .copy-btn {
+            background: #7d8f6b;
+            color: white;
+            padding: 4px 10px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.85em;
+            cursor: pointer;
+            margin-left: 8px;
+        }
+
+        .copy-btn:hover {
+            background: #6b7c59;
+        }
+
+        .review-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .review-content {
+            margin-top: 20px;
+            line-height: 1.8;
+        }
+
+        .review-highlight {
+            background: rgba(168, 198, 159, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            border-left: 4px solid #7d8f6b;
+        }
+
+        .chart-canvas {
+            max-height: 300px;
+        }
     </style>
 </head>
 <body>
@@ -567,6 +789,41 @@
                     <div class="stat-number" id="currentWeek">1</div>
                     <div class="stat-label">Current Week</div>
                 </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="longestStreak">0</div>
+                    <div class="stat-label">Longest Streak</div>
+                </div>
+            </div>
+            <div class="export-section">
+                <button class="btn" onclick="exportData()">📊 Export Data (CSV)</button>
+                <button class="btn" onclick="showMonthlyReview()" style="margin-left: 10px;">📅 Monthly Review</button>
+                <button class="btn" onclick="showYearInReview()" style="margin-left: 10px;">🎉 Year in Review</button>
+            </div>
+        </div>
+
+        <div class="templates-section">
+            <h2 style="color: #d4756f; margin-bottom: 10px;">Quick Start Templates</h2>
+            <div class="template-grid">
+                <div class="template-card" onclick="addTemplate('fitness')">
+                    <div class="template-icon">💪</div>
+                    <div class="template-title">Fitness Journey</div>
+                    <div class="template-desc">Exercise 4x/week, 10k steps daily</div>
+                </div>
+                <div class="template-card" onclick="addTemplate('learning')">
+                    <div class="template-icon">📚</div>
+                    <div class="template-title">Learning Goal</div>
+                    <div class="template-desc">Read 2 books/month, daily practice</div>
+                </div>
+                <div class="template-card" onclick="addTemplate('wellness')">
+                    <div class="template-icon">🧘</div>
+                    <div class="template-title">Wellness Focus</div>
+                    <div class="template-desc">Meditation, sleep, hydration</div>
+                </div>
+                <div class="template-card" onclick="addTemplate('nutrition')">
+                    <div class="template-icon">🥗</div>
+                    <div class="template-title">Healthy Eating</div>
+                    <div class="template-desc">30 fruits/veg weekly, cook 5x</div>
+                </div>
             </div>
         </div>
 
@@ -585,10 +842,15 @@
                 </select>
             </div>
             <div class="goal-input-section">
-                <label>Set a numerical goal (e.g. 30 for "eat 30 fruits &amp; veg")</label>
+                <label>Set a numerical goal (e.g. 30 for "eat 30 fruits & veg")</label>
                 <input type="number" id="goalValue" placeholder="Leave blank if not needed">
             </div>
             <button class="btn" onclick="addResolution()" style="margin-top: 15px;">Add Resolution</button>
+        </div>
+
+        <div class="charts-section" id="chartsSection" style="display: none;">
+            <h2 style="color: #d4756f; margin-bottom: 10px;">Progress Charts</h2>
+            <canvas id="progressChart" class="chart-canvas"></canvas>
         </div>
 
         <div class="categories-container" id="categoriesContainer"></div>
@@ -600,14 +862,12 @@
             <h3 id="modalTitle">Track Progress</h3>
             <p class="modal-period-label" id="modalDescription"></p>
 
-            <!-- Tally display (shown when there's a goal) -->
             <div class="tally-display" id="tallyDisplay" style="display:none;">
                 <div class="tally-number" id="tallyNumber">0 <span style="font-size:0.5em; color:#8b8165;" id="tallyGoalLabel">/ 30</span></div>
                 <div class="tally-goal" id="tallyGoalText">out of your goal</div>
                 <div class="tally-bar-bg"><div class="tally-bar-fill" id="tallyBarFill" style="width:0%;"></div></div>
             </div>
 
-            <!-- Entry log (the "what did you eat?" list) -->
             <div class="entries-section" id="entriesSection">
                 <h4>Log an entry</h4>
                 <div id="entriesList"></div>
@@ -615,13 +875,24 @@
                     <input type="text" id="newEntryText" placeholder="e.g. Apple, Broccoli...">
                     <button class="add-entry-btn" onclick="addEntry()">+ Add</button>
                 </div>
+                <button class="btn-secondary" onclick="copyFromLastPeriod()" style="width: 100%; margin-top: 10px; padding: 8px;">📋 Copy from last period</button>
             </div>
 
-            <!-- Quick action: mark fully done or missed (no goal set) -->
+            <div class="notes-section">
+                <label><strong>Notes (optional)</strong></label>
+                <textarea id="notesTextarea" placeholder="Add any notes about this period..."></textarea>
+            </div>
+
+            <div class="photo-section">
+                <label><strong>Photos (optional)</strong></label>
+                <input type="file" id="photoInput" accept="image/*" multiple style="margin-top: 8px;">
+                <div class="photo-preview" id="photoPreview"></div>
+            </div>
+
             <div id="quickActionsSection" style="margin-top:18px;">
                 <div class="quick-actions">
-                    <button class="btn" onclick="setModalValue('completed')">Fully Achieved</button>
-                    <button class="btn btn-secondary" onclick="setModalValue('missed')">Missed</button>
+                    <button class="btn" onclick="setModalValue('completed')">✓ Fully Achieved</button>
+                    <button class="btn btn-secondary" onclick="setModalValue('missed')">✗ Missed</button>
                 </div>
             </div>
 
@@ -632,10 +903,17 @@
         </div>
     </div>
 
+    <!-- REVIEW MODAL -->
+    <div class="modal" id="reviewModal">
+        <div class="modal-content" style="max-width: 700px;">
+            <h3 id="reviewTitle">Review</h3>
+            <div id="reviewContent" class="review-content"></div>
+            <button class="btn" onclick="closeReviewModal()" style="margin-top: 20px; width: 100%;">Close</button>
+        </div>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 <script>
-    // ---------------------------------------------------------------
-    // CATEGORY DEFINITIONS
-    // ---------------------------------------------------------------
     var categories = {
         'lifestyle-health': {
             name: 'Lifestyle & Health',
@@ -669,17 +947,13 @@
         }
     };
 
-    // ---------------------------------------------------------------
-    // STATE
-    // ---------------------------------------------------------------
     var resolutions = [];
     var currentResolution = null;
     var currentPeriod = null;
-    var currentEntries = [];   // live copy while modal is open
+    var currentEntries = [];
+    var currentPhotos = [];
+    var chartInstance = null;
 
-    // ---------------------------------------------------------------
-    // LOAD / SAVE
-    // ---------------------------------------------------------------
     function loadResolutions() {
         try {
             var raw = localStorage.getItem('resolutions');
@@ -694,13 +968,10 @@
         try {
             localStorage.setItem('resolutions', JSON.stringify(resolutions));
         } catch(e) {
-            console.error('Save error – storage may be full', e);
+            console.error('Save error', e);
         }
     }
 
-    // ---------------------------------------------------------------
-    // CATEGORIZE
-    // ---------------------------------------------------------------
     function categorizeResolution(text) {
         var lower = text.toLowerCase();
         var keys = Object.keys(categories);
@@ -715,9 +986,6 @@
         return 'personal';
     }
 
-    // ---------------------------------------------------------------
-    // ADD RESOLUTION
-    // ---------------------------------------------------------------
     function addResolution() {
         var text = document.getElementById('resolutionText').value.trim();
         var frequency = document.getElementById('frequency').value;
@@ -731,10 +999,9 @@
             frequency: frequency,
             category: categorizeResolution(text),
             goal: goalRaw ? parseInt(goalRaw, 10) : null,
-            progress: {}          // key → value (see below)
+            progress: {}
         };
 
-        // Initialise all slots to null
         if (frequency === 'weekly') {
             for (var i = 1; i <= 52; i++) resolution.progress['week-' + i] = null;
         } else if (frequency === 'monthly') {
@@ -751,11 +1018,54 @@
         renderResolutions();
     }
 
-    // ---------------------------------------------------------------
-    // MODAL – OPEN / CLOSE
-    // ---------------------------------------------------------------
+    function addTemplate(type) {
+        var templates = {
+            fitness: [
+                { text: 'Exercise 4 times per week', frequency: 'weekly', goal: 4 },
+                { text: 'Walk 10,000 steps daily', frequency: 'weekly', goal: 7 }
+            ],
+            learning: [
+                { text: 'Read 2 books per month', frequency: 'monthly', goal: 2 },
+                { text: 'Practice new skill 30 minutes daily', frequency: 'weekly', goal: 210 }
+            ],
+            wellness: [
+                { text: 'Meditate 5 times per week', frequency: 'weekly', goal: 5 },
+                { text: 'Sleep 8 hours nightly', frequency: 'weekly', goal: 7 },
+                { text: 'Drink 8 glasses of water daily', frequency: 'weekly', goal: 56 }
+            ],
+            nutrition: [
+                { text: 'Eat 30 fruits and vegetables per week', frequency: 'weekly', goal: 30 },
+                { text: 'Cook at home 5 times per week', frequency: 'weekly', goal: 5 }
+            ]
+        };
+
+        var items = templates[type];
+        for (var i = 0; i < items.length; i++) {
+            var item = items[i];
+            var resolution = {
+                id: Date.now() + i,
+                text: item.text,
+                frequency: item.frequency,
+                category: categorizeResolution(item.text),
+                goal: item.goal,
+                progress: {}
+            };
+
+            if (item.frequency === 'weekly') {
+                for (var w = 1; w <= 52; w++) resolution.progress['week-' + w] = null;
+            } else if (item.frequency === 'monthly') {
+                for (var m = 1; m <= 12; m++) resolution.progress['month-' + m] = null;
+            }
+
+            resolutions.push(resolution);
+        }
+
+        saveResolutions();
+        renderResolutions();
+        alert('Template added! Scroll down to see your new resolutions.');
+    }
+
     function openProgressModal(resolutionId, period) {
-        // find resolution
         currentResolution = null;
         for (var i = 0; i < resolutions.length; i++) {
             if (resolutions[i].id === resolutionId) { currentResolution = resolutions[i]; break; }
@@ -763,7 +1073,6 @@
         if (!currentResolution) return;
         currentPeriod = period;
 
-        // title & period label
         document.getElementById('modalTitle').textContent = currentResolution.text;
 
         var periodText = period;
@@ -776,14 +1085,17 @@
         }
         document.getElementById('modalDescription').textContent = 'Logging for: ' + periodText;
 
-        // restore existing data into live state
         var existing = currentResolution.progress[period];
         currentEntries = [];
-        if (existing && typeof existing === 'object' && existing.entries) {
-            currentEntries = existing.entries.slice(); // copy
+        currentPhotos = [];
+        document.getElementById('notesTextarea').value = '';
+
+        if (existing && typeof existing === 'object') {
+            if (existing.entries) currentEntries = existing.entries.slice();
+            if (existing.photos) currentPhotos = existing.photos.slice();
+            if (existing.notes) document.getElementById('notesTextarea').value = existing.notes;
         }
 
-        // tally display
         var goal = currentResolution.goal;
         if (goal) {
             document.getElementById('tallyDisplay').style.display = 'block';
@@ -793,6 +1105,7 @@
         }
 
         renderEntries();
+        renderPhotos();
         document.getElementById('progressModal').classList.add('active');
     }
 
@@ -801,11 +1114,10 @@
         currentResolution = null;
         currentPeriod = null;
         currentEntries = [];
+        currentPhotos = [];
+        document.getElementById('photoInput').value = '';
     }
 
-    // ---------------------------------------------------------------
-    // MODAL – ENTRY LIST
-    // ---------------------------------------------------------------
     function addEntry() {
         var txt = document.getElementById('newEntryText').value.trim();
         if (!txt) return;
@@ -815,7 +1127,6 @@
         updateTallyDisplay();
     }
 
-    // allow pressing Enter to add
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Enter' && document.getElementById('newEntryText') === document.activeElement) {
             e.preventDefault();
@@ -843,9 +1154,67 @@
         container.innerHTML = html;
     }
 
-    // ---------------------------------------------------------------
-    // MODAL – TALLY BAR
-    // ---------------------------------------------------------------
+    function copyFromLastPeriod() {
+        if (!currentResolution || !currentPeriod) return;
+        
+        var lastPeriod = null;
+        if (currentPeriod.indexOf('week-') === 0) {
+            var weekNum = parseInt(currentPeriod.split('-')[1], 10);
+            if (weekNum > 1) lastPeriod = 'week-' + (weekNum - 1);
+        } else if (currentPeriod.indexOf('month-') === 0) {
+            var monthNum = parseInt(currentPeriod.split('-')[1], 10);
+            if (monthNum > 1) lastPeriod = 'month-' + (monthNum - 1);
+        }
+
+        if (!lastPeriod) {
+            alert('No previous period to copy from!');
+            return;
+        }
+
+        var lastData = currentResolution.progress[lastPeriod];
+        if (lastData && typeof lastData === 'object' && lastData.entries) {
+            currentEntries = lastData.entries.slice();
+            renderEntries();
+            updateTallyDisplay();
+            alert('Copied ' + currentEntries.length + ' entries from last period!');
+        } else {
+            alert('No entries in the previous period to copy.');
+        }
+    }
+
+    document.getElementById('photoInput').addEventListener('change', function(e) {
+        var files = e.target.files;
+        for (var i = 0; i < files.length; i++) {
+            var reader = new FileReader();
+            reader.onload = (function(file) {
+                return function(ev) {
+                    currentPhotos.push(ev.target.result);
+                    renderPhotos();
+                };
+            })(files[i]);
+            reader.readAsDataURL(files[i]);
+        }
+    });
+
+    function renderPhotos() {
+        var container = document.getElementById('photoPreview');
+        if (currentPhotos.length === 0) {
+            container.innerHTML = '';
+            return;
+        }
+        var html = '';
+        for (var i = 0; i < currentPhotos.length; i++) {
+            html += '<div class="photo-item"><img src="' + currentPhotos[i] + '" alt="Photo">' +
+                    '<button class="photo-delete" onclick="removePhoto(' + i + ')">×</button></div>';
+        }
+        container.innerHTML = html;
+    }
+
+    function removePhoto(index) {
+        currentPhotos.splice(index, 1);
+        renderPhotos();
+    }
+
     function updateTallyDisplay() {
         var goal = currentResolution ? currentResolution.goal : 0;
         var count = currentEntries.length;
@@ -857,48 +1226,60 @@
 
         var bar = document.getElementById('tallyBarFill');
         bar.style.width = pct + '%';
-        // colour transitions: red-ish → amber → green
         if (pct >= 100)      bar.style.background = 'linear-gradient(135deg, #a8c69f, #8db382)';
         else if (pct >= 60)  bar.style.background = 'linear-gradient(135deg, #d4c896, #c4b67d)';
         else                 bar.style.background = 'linear-gradient(135deg, #c9b8a3, #b5a390)';
     }
 
-    // ---------------------------------------------------------------
-    // MODAL – SAVE / QUICK SET
-    // ---------------------------------------------------------------
     function setModalValue(type) {
-        // "Fully Achieved" / "Missed" quick buttons – only meaningful when there is NO goal
-        if (type === 'completed') currentResolution.progress[currentPeriod] = true;
-        else                      currentResolution.progress[currentPeriod] = false;
+        var goal = currentResolution.goal;
+        if (currentEntries.length > 0 || goal) {
+            var value = currentEntries.length;
+            if (type === 'completed' && goal && value < goal) {
+                value = goal;
+            }
+            
+            var notes = document.getElementById('notesTextarea').value.trim();
+            
+            currentResolution.progress[currentPeriod] = {
+                value: value,
+                goal: goal,
+                entries: currentEntries.slice(),
+                photos: currentPhotos.slice(),
+                notes: notes || null,
+                markedComplete: type === 'completed'
+            };
+        } else {
+            if (type === 'completed') currentResolution.progress[currentPeriod] = true;
+            else                      currentResolution.progress[currentPeriod] = false;
+        }
         saveResolutions();
         closeModal();
         renderResolutions();
     }
 
     function saveProgress() {
-        // If entries exist, save as structured object; otherwise leave as quick-set or null
-        if (currentEntries.length > 0) {
+        if (currentEntries.length > 0 || currentPhotos.length > 0) {
             var goal = currentResolution.goal;
+            var notes = document.getElementById('notesTextarea').value.trim();
+            
             currentResolution.progress[currentPeriod] = {
                 value: currentEntries.length,
                 goal: goal,
-                entries: currentEntries.slice()
+                entries: currentEntries.slice(),
+                photos: currentPhotos.slice(),
+                notes: notes || null
             };
         }
-        // If no entries but goal exists and user hasn't quick-set, keep null (no change)
         saveResolutions();
         closeModal();
         renderResolutions();
     }
 
-    // ---------------------------------------------------------------
-    // RENDERING – BOXES
-    // ---------------------------------------------------------------
     function getStatusInfo(status) {
         if (status === null || status === undefined) return { cls: '', display: '' };
         if (status === true)  return { cls: 'completed', display: '✓' };
         if (status === false) return { cls: 'missed',    display: '✗' };
-        // object with value
         if (typeof status === 'object' && status.value !== undefined) {
             var pct = status.goal ? Math.round((status.value / status.goal) * 100) : 50;
             var cls = pct >= 100 ? 'completed' : (pct >= 60 ? 'partial' : 'missed');
@@ -907,14 +1288,46 @@
         return { cls: '', display: '' };
     }
 
-    // ---------------------------------------------------------------
-    // RENDERING – MAIN
-    // ---------------------------------------------------------------
+    function calculateStreak(resolution) {
+        var longest = 0;
+        var current = 0;
+        var keys = Object.keys(resolution.progress).sort();
+        
+        for (var i = 0; i < keys.length; i++) {
+            var status = resolution.progress[keys[i]];
+            var isSuccess = false;
+            
+            if (status === true) isSuccess = true;
+            else if (typeof status === 'object' && status.value !== undefined) {
+                var pct = status.goal ? (status.value / status.goal) * 100 : 50;
+                if (pct >= 60) isSuccess = true;
+            }
+            
+            if (isSuccess) {
+                current++;
+                if (current > longest) longest = current;
+            } else {
+                current = 0;
+            }
+        }
+        
+        return longest;
+    }
+
+    function toggleResolution(resolutionId) {
+        var content = document.getElementById('content-' + resolutionId);
+        var icon = document.getElementById('collapse-' + resolutionId);
+        
+        if (content && icon) {
+            content.classList.toggle('expanded');
+            icon.classList.toggle('expanded');
+        }
+    }
+
     function renderResolutions() {
         var container = document.getElementById('categoriesContainer');
         container.innerHTML = '';
 
-        // group by category
         var grouped = {};
         for (var i = 0; i < resolutions.length; i++) {
             var cat = resolutions[i].category;
@@ -922,69 +1335,106 @@
             grouped[cat].push(resolutions[i]);
         }
 
+        var currentWeekNum = getCurrentWeek();
+        var currentMonthNum = new Date().getMonth() + 1;
+
         var catKeys = Object.keys(grouped);
         for (var c = 0; c < catKeys.length; c++) {
             var categoryKey = catKeys[c];
             var category = categories[categoryKey];
             var items = grouped[categoryKey];
 
+            var catCompleted = 0;
+            var catTotal = 0;
+            for (var i = 0; i < items.length; i++) {
+                var prog = items[i].progress;
+                var keys = Object.keys(prog);
+                for (var j = 0; j < keys.length; j++) {
+                    var s = prog[keys[j]];
+                    if (s === null || s === undefined) continue;
+                    catTotal++;
+                    if (s === true) catCompleted++;
+                    else if (typeof s === 'object' && s.value !== undefined) {
+                        if (s.goal && s.value >= s.goal) catCompleted++;
+                        else if (s.value > 0) catCompleted += 0.5;
+                    }
+                }
+            }
+            var catRate = catTotal > 0 ? Math.round((catCompleted / catTotal) * 100) : 0;
+
             var card = document.createElement('div');
             card.className = 'category-card';
 
             var html = '<div class="category-header">' +
                 '<span class="category-icon">' + category.icon + '</span>' +
-                '<h3 class="category-title">' + category.name + '</h3></div>';
+                '<h3 class="category-title">' + category.name + '</h3>' +
+                '<span class="category-stats">' + catRate + '% complete</span></div>';
 
             for (var r = 0; r < items.length; r++) {
                 var res = items[r];
+                var streak = calculateStreak(res);
+                
                 html += '<div class="resolution-item">' +
+                    '<div class="resolution-header" onclick="toggleResolution(' + res.id + ')">' +
+                    '<div>' +
                     '<div class="resolution-title">' + escapeHtml(res.text) + '</div>' +
                     '<span class="resolution-frequency">' + res.frequency + '</span>';
 
                 if (res.goal) html += ' <span class="resolution-frequency" style="background:#8b8165;">Goal: ' + res.goal + '</span>';
+                if (streak > 0) html += ' <span class="streak-badge">🔥 ' + streak + ' streak</span>';
+                
+                html += '</div><span class="collapse-icon" id="collapse-' + res.id + '">▶</span></div>' +
+                    '<div class="resolution-content" id="content-' + res.id + '">';
 
-                // --- weekly boxes ---
                 if (res.frequency === 'weekly') {
                     html += '<div class="progress-section"><strong>Weekly Progress:</strong>' +
                         '<div class="legend">' +
                         '<div class="legend-item"><div class="legend-box legend-completed"></div><span>Achieved</span></div>' +
                         '<div class="legend-item"><div class="legend-box legend-partial"></div><span>Close</span></div>' +
-                        '<div class="legend-item"><div class="legend-box legend-missed"></div><span>Missed</span></div></div>' +
+                        '<div class="legend-item"><div class="legend-box legend-missed"></div><span>Missed</span></div>' +
+                        '<div class="legend-item"><div class="legend-box legend-current"></div><span>This Week</span></div></div>' +
                         '<div class="week-tracker">';
                     for (var w = 1; w <= 52; w++) {
                         var status = res.progress['week-' + w];
                         var info = getStatusInfo(status);
                         var display = info.display || String(w);
+                        var currentClass = (w === currentWeekNum) ? ' current' : '';
                         var title = '';
-                        if (typeof status === 'object' && status && status.entries) {
-                            title = ' title="' + escapeHtml(status.entries.join(', ')) + '"';
+                        if (typeof status === 'object' && status) {
+                            var parts = [];
+                            if (status.entries) parts.push(status.entries.join(', '));
+                            if (status.notes) parts.push('Notes: ' + status.notes);
+                            if (parts.length > 0) title = ' title="' + escapeHtml(parts.join(' | ')) + '"';
                         }
-                        html += '<div class="week-box ' + info.cls + '" onclick="openProgressModal(' + res.id + ', \'week-' + w + '\')" ' + title + '>' + display + '</div>';
+                        html += '<div class="week-box ' + info.cls + currentClass + '" onclick="openProgressModal(' + res.id + ', \'week-' + w + '\')" ' + title + '>' + display + '</div>';
                     }
                     html += '</div></div>';
                 }
-                // --- monthly boxes ---
                 else if (res.frequency === 'monthly') {
                     var mLabels = ['J','F','M','A','M','J','J','A','S','O','N','D'];
                     html += '<div class="progress-section"><strong>Monthly Progress:</strong>' +
                         '<div class="legend">' +
                         '<div class="legend-item"><div class="legend-box legend-completed"></div><span>Achieved</span></div>' +
                         '<div class="legend-item"><div class="legend-box legend-partial"></div><span>Close</span></div>' +
-                        '<div class="legend-item"><div class="legend-box legend-missed"></div><span>Missed</span></div></div>' +
+                        '<div class="legend-item"><div class="legend-box legend-missed"></div><span>Missed</span></div>' +
+                        '<div class="legend-item"><div class="legend-box legend-current"></div><span>This Month</span></div></div>' +
                         '<div class="month-tracker">';
                     for (var m = 1; m <= 12; m++) {
                         var status = res.progress['month-' + m];
                         var info = getStatusInfo(status);
                         var display = info.display || mLabels[m - 1];
+                        var currentClass = (m === currentMonthNum) ? ' current' : '';
                         var title = '';
-                        if (typeof status === 'object' && status && status.entries) {
-                            title = ' title="' + escapeHtml(status.entries.join(', ')) + '"';
+                        if (typeof status === 'object' && status) {
+                            var parts = [];
+                            if (status.entries) parts.push(status.entries.join(', '));
+                            if (status.notes) parts.push('Notes: ' + status.notes);
+                            if (parts.length > 0) title = ' title="' + escapeHtml(parts.join(' | ')) + '"';
                         }
-                        html += '<div class="month-box ' + info.cls + '" onclick="openProgressModal(' + res.id + ', \'month-' + m + '\')" ' + title + '>' + display + '</div>';
+                        html += '<div class="month-box ' + info.cls + currentClass + '" onclick="openProgressModal(' + res.id + ', \'month-' + m + '\')" ' + title + '>' + display + '</div>';
                     }
                     html += '</div></div>';
                 }
-                // --- annual button ---
                 else if (res.frequency === 'annual') {
                     var aStatus = res.progress['annual'];
                     var statusText = 'Not yet tracked';
@@ -1000,7 +1450,7 @@
                         'Track: ' + statusText + '</button></div>';
                 }
 
-                html += '<button class="delete-btn" onclick="deleteResolution(' + res.id + ')">Delete</button></div>';
+                html += '<button class="delete-btn" onclick="deleteResolution(' + res.id + ')">Delete</button></div></div>';
             }
 
             card.innerHTML = html;
@@ -1008,15 +1458,13 @@
         }
 
         if (resolutions.length === 0) {
-            container.innerHTML = '<div class="empty-state">No resolutions yet. Add your first one above!</div>';
+            container.innerHTML = '<div class="empty-state">No resolutions yet. Add your first one above or try a template!</div>';
         }
 
         calculateStats();
+        updateCharts();
     }
 
-    // ---------------------------------------------------------------
-    // DELETE
-    // ---------------------------------------------------------------
     function deleteResolution(resolutionId) {
         if (!confirm('Delete this resolution?')) return;
         resolutions = resolutions.filter(function(r) { return r.id !== resolutionId; });
@@ -1024,9 +1472,6 @@
         renderResolutions();
     }
 
-    // ---------------------------------------------------------------
-    // STATS
-    // ---------------------------------------------------------------
     function getCurrentWeek() {
         var start = new Date(2026, 0, 1);
         var now   = new Date();
@@ -1037,8 +1482,12 @@
     function calculateStats() {
         var total = resolutions.length;
         var totalPossible = 0, totalCompleted = 0;
+        var maxStreak = 0;
 
         for (var i = 0; i < resolutions.length; i++) {
+            var streak = calculateStreak(resolutions[i]);
+            if (streak > maxStreak) maxStreak = streak;
+            
             var prog = resolutions[i].progress;
             var keys = Object.keys(prog);
             for (var j = 0; j < keys.length; j++) {
@@ -1059,20 +1508,269 @@
         document.getElementById('completionRate').textContent   = rate + '%';
         document.getElementById('overallProgress').style.width  = rate + '%';
         document.getElementById('currentWeek').textContent      = getCurrentWeek();
+        document.getElementById('longestStreak').textContent    = maxStreak;
     }
 
-    // ---------------------------------------------------------------
-    // UTILITY
-    // ---------------------------------------------------------------
+    function updateCharts() {
+        if (resolutions.length === 0) {
+            document.getElementById('chartsSection').style.display = 'none';
+            return;
+        }
+
+        document.getElementById('chartsSection').style.display = 'block';
+        
+        var weeklyData = {};
+        for (var w = 1; w <= 52; w++) {
+            weeklyData['Week ' + w] = { completed: 0, total: 0 };
+        }
+
+        for (var i = 0; i < resolutions.length; i++) {
+            if (resolutions[i].frequency !== 'weekly') continue;
+            for (var w = 1; w <= 52; w++) {
+                var status = resolutions[i].progress['week-' + w];
+                if (status === null || status === undefined) continue;
+                weeklyData['Week ' + w].total++;
+                if (status === true) weeklyData['Week ' + w].completed++;
+                else if (typeof status === 'object' && status.value !== undefined) {
+                    if (status.goal && status.value >= status.goal) weeklyData['Week ' + w].completed++;
+                }
+            }
+        }
+
+        var labels = [];
+        var data = [];
+        var keys = Object.keys(weeklyData);
+        for (var i = 0; i < keys.length; i++) {
+            var week = weeklyData[keys[i]];
+            if (week.total > 0) {
+                labels.push(keys[i]);
+                data.push(Math.round((week.completed / week.total) * 100));
+            }
+        }
+
+        var ctx = document.getElementById('progressChart').getContext('2d');
+        
+        if (chartInstance) chartInstance.destroy();
+        
+        chartInstance = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Weekly Completion Rate (%)',
+                    data: data,
+                    borderColor: '#7d8f6b',
+                    backgroundColor: 'rgba(125, 143, 107, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: true }
+                },
+                scales: {
+                    y: { beginAtZero: true, max: 100 }
+                }
+            }
+        });
+    }
+
+    function exportData() {
+        var csv = 'Resolution,Frequency,Category,Period,Status,Value,Goal,Entries,Notes\n';
+        
+        for (var i = 0; i < resolutions.length; i++) {
+            var res = resolutions[i];
+            var keys = Object.keys(res.progress);
+            for (var j = 0; j < keys.length; j++) {
+                var period = keys[j];
+                var status = res.progress[period];
+                if (status === null || status === undefined) continue;
+                
+                var statusText = '';
+                var value = '';
+                var entries = '';
+                var notes = '';
+                
+                if (status === true) statusText = 'Completed';
+                else if (status === false) statusText = 'Missed';
+                else if (typeof status === 'object') {
+                    value = status.value || '';
+                    statusText = status.goal && status.value >= status.goal ? 'Completed' : 'Partial';
+                    entries = status.entries ? '"' + status.entries.join(', ') + '"' : '';
+                    notes = status.notes ? '"' + status.notes.replace(/"/g, '""') + '"' : '';
+                }
+                
+                csv += '"' + res.text.replace(/"/g, '""') + '",' +
+                       res.frequency + ',' +
+                       res.category + ',' +
+                       period + ',' +
+                       statusText + ',' +
+                       value + ',' +
+                       (res.goal || '') + ',' +
+                       entries + ',' +
+                       notes + '\n';
+            }
+        }
+        
+        var blob = new Blob([csv], { type: 'text/csv' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = '2026-resolutions-export.csv';
+        a.click();
+    }
+
+    function showMonthlyReview() {
+        var currentMonth = new Date().getMonth() + 1;
+        var monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+        var monthName = monthNames[currentMonth - 1];
+        
+        var html = '<h4 style="color: #6b7c59; margin-bottom: 15px;">' + monthName + ' 2026 Review</h4>';
+        
+        var totalGoals = 0;
+        var metGoals = 0;
+        var highlights = [];
+        
+        for (var i = 0; i < resolutions.length; i++) {
+            var res = resolutions[i];
+            if (res.frequency === 'monthly') {
+                var status = res.progress['month-' + currentMonth];
+                if (status !== null && status !== undefined) {
+                    totalGoals++;
+                    if (status === true) {
+                        metGoals++;
+                        highlights.push(res.text);
+                    } else if (typeof status === 'object' && status.goal && status.value >= status.goal) {
+                        metGoals++;
+                        highlights.push(res.text + ' (' + status.value + ' achieved)');
+                    }
+                }
+            }
+        }
+        
+        var rate = totalGoals > 0 ? Math.round((metGoals / totalGoals) * 100) : 0;
+        
+        html += '<div class="review-highlight">';
+        html += '<strong>Completion Rate:</strong> ' + rate + '% (' + metGoals + ' of ' + totalGoals + ' monthly goals)<br>';
+        html += '<strong>Status:</strong> ' + (rate >= 75 ? '🎉 Excellent!' : rate >= 50 ? '👍 Good progress' : '💪 Keep going!');
+        html += '</div>';
+        
+        if (highlights.length > 0) {
+            html += '<h4 style="margin-top: 20px; color: #6b7c59;">Highlights:</h4><ul>';
+            for (var i = 0; i < highlights.length; i++) {
+                html += '<li>' + escapeHtml(highlights[i]) + '</li>';
+            }
+            html += '</ul>';
+        }
+        
+        html += '<p style="margin-top: 20px; font-style: italic; color: #8b8165;">Keep up the great work in ' + 
+                (currentMonth < 12 ? monthNames[currentMonth] : 'the coming year') + '!</p>';
+        
+        document.getElementById('reviewTitle').textContent = 'Monthly Review';
+        document.getElementById('reviewContent').innerHTML = html;
+        document.getElementById('reviewModal').classList.add('active');
+    }
+
+    function showYearInReview() {
+        var html = '<h4 style="color: #6b7c59; margin-bottom: 15px;">Your 2026 Year in Review</h4>';
+        
+        var totalResolutions = resolutions.length;
+        var totalTracked = 0;
+        var totalCompleted = 0;
+        var bestCategory = null;
+        var categoryStats = {};
+        
+        for (var i = 0; i < resolutions.length; i++) {
+            var res = resolutions[i];
+            var cat = res.category;
+            
+            if (!categoryStats[cat]) {
+                categoryStats[cat] = { name: categories[cat].name, icon: categories[cat].icon, tracked: 0, completed: 0 };
+            }
+            
+            var keys = Object.keys(res.progress);
+            for (var j = 0; j < keys.length; j++) {
+                var s = res.progress[keys[j]];
+                if (s === null || s === undefined) continue;
+                totalTracked++;
+                categoryStats[cat].tracked++;
+                
+                if (s === true) {
+                    totalCompleted++;
+                    categoryStats[cat].completed++;
+                } else if (typeof s === 'object' && s.goal && s.value >= s.goal) {
+                    totalCompleted++;
+                    categoryStats[cat].completed++;
+                }
+            }
+        }
+        
+        var overallRate = totalTracked > 0 ? Math.round((totalCompleted / totalTracked) * 100) : 0;
+        
+        var bestRate = 0;
+        var catKeys = Object.keys(categoryStats);
+        for (var i = 0; i < catKeys.length; i++) {
+            var cat = categoryStats[catKeys[i]];
+            var rate = cat.tracked > 0 ? (cat.completed / cat.tracked) * 100 : 0;
+            if (rate > bestRate) {
+                bestRate = rate;
+                bestCategory = cat;
+            }
+        }
+        
+        var longestStreakValue = 0;
+        var longestStreakRes = null;
+        for (var i = 0; i < resolutions.length; i++) {
+            var streak = calculateStreak(resolutions[i]);
+            if (streak > longestStreakValue) {
+                longestStreakValue = streak;
+                longestStreakRes = resolutions[i];
+            }
+        }
+        
+        html += '<div class="review-highlight">';
+        html += '<strong>🎯 Total Resolutions:</strong> ' + totalResolutions + '<br>';
+        html += '<strong>📊 Overall Completion:</strong> ' + overallRate + '% (' + totalCompleted + '/' + totalTracked + ')<br>';
+        html += '<strong>🔥 Longest Streak:</strong> ' + longestStreakValue + ' periods';
+        if (longestStreakRes) html += ' (' + escapeHtml(longestStreakRes.text) + ')';
+        html += '<br>';
+        if (bestCategory) {
+            html += '<strong>⭐ Best Category:</strong> ' + bestCategory.icon + ' ' + bestCategory.name + 
+                    ' (' + Math.round(bestRate) + '% completion)';
+        }
+        html += '</div>';
+        
+        html += '<h4 style="margin-top: 20px; color: #6b7c59;">Category Breakdown:</h4>';
+        for (var i = 0; i < catKeys.length; i++) {
+            var cat = categoryStats[catKeys[i]];
+            var rate = cat.tracked > 0 ? Math.round((cat.completed / cat.tracked) * 100) : 0;
+            html += '<div style="margin: 10px 0; padding: 10px; background: rgba(125,143,107,0.1); border-radius: 8px;">';
+            html += '<strong>' + cat.icon + ' ' + cat.name + ':</strong> ' + rate + '% (' + cat.completed + '/' + cat.tracked + ')';
+            html += '<div class="progress-bar" style="margin-top: 5px;"><div class="progress-fill" style="width: ' + rate + '%;"></div></div>';
+            html += '</div>';
+        }
+        
+        html += '<p style="margin-top: 20px; font-style: italic; color: #8b8165; text-align: center;">' +
+                '🎉 Congratulations on your growth journey in 2026! 🎉</p>';
+        
+        document.getElementById('reviewTitle').textContent = 'Year in Review';
+        document.getElementById('reviewContent').innerHTML = html;
+        document.getElementById('reviewModal').classList.add('active');
+    }
+
+    function closeReviewModal() {
+        document.getElementById('reviewModal').classList.remove('active');
+    }
+
     function escapeHtml(str) {
         var div = document.createElement('div');
         div.appendChild(document.createTextNode(str));
         return div.innerHTML;
     }
 
-    // ---------------------------------------------------------------
-    // BOOT
-    // ---------------------------------------------------------------
     loadResolutions();
     renderResolutions();
 </script>
