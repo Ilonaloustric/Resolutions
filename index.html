@@ -825,32 +825,6 @@
             </div>
         </div>
 
-        <div class="templates-section">
-            <h2 style="color: #d4756f; margin-bottom: 10px;">Quick Start Templates</h2>
-            <div class="template-grid">
-                <div class="template-card" onclick="addTemplate('fitness')">
-                    <div class="template-icon">💪</div>
-                    <div class="template-title">Fitness Journey</div>
-                    <div class="template-desc">Exercise 4x/week, 10k steps daily</div>
-                </div>
-                <div class="template-card" onclick="addTemplate('learning')">
-                    <div class="template-icon">📚</div>
-                    <div class="template-title">Learning Goal</div>
-                    <div class="template-desc">Read 2 books/month, daily practice</div>
-                </div>
-                <div class="template-card" onclick="addTemplate('wellness')">
-                    <div class="template-icon">🧘</div>
-                    <div class="template-title">Wellness Focus</div>
-                    <div class="template-desc">Meditation, sleep, hydration</div>
-                </div>
-                <div class="template-card" onclick="addTemplate('nutrition')">
-                    <div class="template-icon">🥗</div>
-                    <div class="template-title">Healthy Eating</div>
-                    <div class="template-desc">30 fruits/veg weekly, cook 5x</div>
-                </div>
-            </div>
-        </div>
-
         <div class="add-resolution-section">
             <h2>Add New Resolution</h2>
             <div class="form-group">
@@ -981,18 +955,24 @@
     function loadResolutions() {
         try {
             var raw = localStorage.getItem('resolutions');
+            console.log('Loading from localStorage:', raw);
             resolutions = raw ? JSON.parse(raw) : [];
+            console.log('Loaded resolutions:', resolutions.length);
         } catch(e) {
             console.error('Load error', e);
             resolutions = [];
+            alert('Error loading data: ' + e.message);
         }
     }
 
     function saveResolutions() {
         try {
-            localStorage.setItem('resolutions', JSON.stringify(resolutions));
+            var jsonString = JSON.stringify(resolutions);
+            localStorage.setItem('resolutions', jsonString);
+            console.log('Saved to localStorage:', resolutions.length, 'resolutions');
         } catch(e) {
-            console.error('Save error', e);
+            console.error('Save error – storage may be full', e);
+            alert('Error saving data: ' + e.message);
         }
     }
 
@@ -1015,7 +995,10 @@
         var frequency = document.getElementById('frequency').value;
         var goalRaw = document.getElementById('goalValue').value.trim();
 
-        if (!text) { alert('Please enter a resolution!'); return; }
+        if (!text) { 
+            alert('Please enter a resolution!'); 
+            return; 
+        }
 
         var resolution = {
             id: Date.now(),
@@ -1035,11 +1018,17 @@
         }
 
         resolutions.push(resolution);
+        console.log('Added resolution:', resolution);
+        console.log('Total resolutions:', resolutions.length);
+        
         saveResolutions();
 
         document.getElementById('resolutionText').value = '';
         document.getElementById('goalValue').value = '';
+        
         renderResolutions();
+        
+        alert('Resolution added successfully!');
     }
 
     function addTemplate(type) {
@@ -1349,28 +1338,31 @@
     }
 
     function renderResolutions() {
+        console.log('Rendering resolutions. Total:', resolutions.length);
+        
         var container = document.getElementById('categoriesContainer');
         container.innerHTML = '';
+
+        // If no resolutions at all, show empty state
+        if (resolutions.length === 0) {
+            container.innerHTML = '<div class="empty-state">No resolutions yet. Add your first one above!</div>';
+            calculateStats();
+            return;
+        }
 
         var grouped = {};
         for (var i = 0; i < resolutions.length; i++) {
             var cat = resolutions[i].category;
+            console.log('Resolution', i, 'category:', cat);
             if (!grouped[cat]) grouped[cat] = [];
             grouped[cat].push(resolutions[i]);
         }
 
-        // Always show categories even if empty to help with debugging
         var currentWeekNum = getCurrentWeek();
         var currentMonthNum = new Date().getMonth() + 1;
 
         var catKeys = Object.keys(grouped);
-        
-        // If no resolutions at all, show empty state
-        if (resolutions.length === 0) {
-            container.innerHTML = '<div class="empty-state">No resolutions yet. Add your first one above or try a template!</div>';
-            calculateStats();
-            return;
-        }
+        console.log('Categories to render:', catKeys);
         
         for (var c = 0; c < catKeys.length; c++) {
             var categoryKey = catKeys[c];
@@ -1383,6 +1375,7 @@
             }
             
             var items = grouped[categoryKey];
+            console.log('Rendering category:', categoryKey, 'with', items.length, 'items');
 
             var catCompleted = 0;
             var catTotal = 0;
@@ -1497,6 +1490,8 @@
             container.appendChild(card);
         }
 
+        console.log('Finished rendering. Container has', container.children.length, 'category cards');
+        
         calculateStats();
         updateCharts();
     }
