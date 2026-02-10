@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -70,7 +71,7 @@
             color: #5a5240;
         }
 
-        input[type="text"], input[type="number"], input[type="file"], select, textarea {
+        input[type="text"], input[type="number"], select {
             width: 100%;
             padding: 12px;
             border: 2px solid #d9cdb3;
@@ -81,12 +82,7 @@
             background: white;
         }
 
-        textarea {
-            resize: vertical;
-            min-height: 60px;
-        }
-
-        input[type="text"]:focus, input[type="number"]:focus, select:focus, textarea:focus {
+        input[type="text"]:focus, input[type="number"]:focus, select:focus {
             outline: none;
             border-color: #7d8f6b;
         }
@@ -145,11 +141,6 @@
             flex-grow: 1;
         }
 
-        .category-stats {
-            font-size: 0.9em;
-            color: #8b8165;
-        }
-
         .resolution-item {
             background: #f5f0e8;
             padding: 15px;
@@ -193,7 +184,7 @@
         }
 
         .resolution-content.expanded {
-            max-height: 3000px;
+            max-height: 2000px;
             transition: max-height 0.5s ease-in;
         }
 
@@ -212,16 +203,6 @@
             border-radius: 12px;
             font-size: 0.85em;
             margin-bottom: 12px;
-        }
-
-        .streak-badge {
-            display: inline-block;
-            padding: 4px 10px;
-            background: linear-gradient(135deg, #d4756f, #c26660);
-            color: white;
-            border-radius: 12px;
-            font-size: 0.85em;
-            margin-left: 6px;
         }
 
         .progress-section {
@@ -630,161 +611,30 @@
             transition: width 0.4s, background 0.4s;
         }
 
-        .notes-section {
-            margin-top: 15px;
-        }
-
-        .notes-section textarea {
-            width: 100%;
-            min-height: 80px;
-            margin-top: 8px;
-        }
-
-        .photo-section {
-            margin-top: 15px;
-        }
-
-        .photo-preview {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .photo-item {
-            position: relative;
-            width: 80px;
-            height: 80px;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 2px solid #d9cdb3;
-        }
-
-        .photo-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .photo-delete {
-            position: absolute;
-            top: 2px;
-            right: 2px;
-            background: rgba(201, 184, 163, 0.9);
-            color: white;
-            border: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 0.8em;
-            line-height: 1;
-        }
-
-        .charts-section {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 25px;
-            border-radius: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        .charts-modal-content {
+            max-width: 900px;
+            width: 95%;
         }
 
         .chart-container {
-            margin-top: 20px;
-            height: 300px;
-        }
-
-        .export-section {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .templates-section {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 25px;
-            border-radius: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        .template-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .template-card {
-            background: #f5f0e8;
-            padding: 20px;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: 2px solid #d9cdb3;
-            -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation;
-            min-height: 100px;
-        }
-
-        .template-card:hover, .template-card:active {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .template-icon {
-            font-size: 2em;
-            margin-bottom: 10px;
-        }
-
-        .template-title {
-            font-weight: bold;
-            color: #5a5240;
-            margin-bottom: 5px;
-        }
-
-        .template-desc {
-            font-size: 0.85em;
-            color: #8b8165;
-        }
-
-        .copy-btn {
-            background: #7d8f6b;
-            color: white;
-            padding: 4px 10px;
-            border: none;
-            border-radius: 6px;
-            font-size: 0.85em;
-            cursor: pointer;
-            margin-left: 8px;
-        }
-
-        .copy-btn:hover {
-            background: #6b7c59;
-        }
-
-        .review-section {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 25px;
-            border-radius: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        .review-content {
-            margin-top: 20px;
-            line-height: 1.8;
-        }
-
-        .review-highlight {
-            background: rgba(168, 198, 159, 0.2);
-            padding: 15px;
-            border-radius: 10px;
-            margin: 10px 0;
-            border-left: 4px solid #7d8f6b;
+            margin: 20px 0;
+            height: 350px;
         }
 
         .chart-canvas {
-            max-height: 300px;
+            max-height: 350px;
+        }
+
+        .chart-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(245, 240, 232, 0.5);
+            border-radius: 12px;
+        }
+
+        .chart-section h4 {
+            color: #6b7c59;
+            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -813,15 +663,9 @@
                     <div class="stat-number" id="currentWeek">1</div>
                     <div class="stat-label">Current Week</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="longestStreak">0</div>
-                    <div class="stat-label">Longest Streak</div>
-                </div>
             </div>
-            <div class="export-section">
-                <button class="btn" onclick="exportData()">📊 Export Data (CSV)</button>
-                <button class="btn" onclick="showMonthlyReview()" style="margin-left: 10px;">📅 Monthly Review</button>
-                <button class="btn" onclick="showYearInReview()" style="margin-left: 10px;">🎉 Year in Review</button>
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn" onclick="showChartsModal()">📊 View Progress Charts</button>
             </div>
         </div>
 
@@ -846,11 +690,6 @@
             <button class="btn" onclick="addResolution()" style="margin-top: 15px;">Add Resolution</button>
         </div>
 
-        <div class="charts-section" id="chartsSection" style="display: none;">
-            <h2 style="color: #d4756f; margin-bottom: 10px;">Progress Charts</h2>
-            <canvas id="progressChart" class="chart-canvas"></canvas>
-        </div>
-
         <div class="categories-container" id="categoriesContainer"></div>
     </div>
 
@@ -873,18 +712,6 @@
                     <input type="text" id="newEntryText" placeholder="e.g. Apple, Broccoli...">
                     <button class="add-entry-btn" onclick="addEntry()">+ Add</button>
                 </div>
-                <button class="btn-secondary" onclick="copyFromLastPeriod()" style="width: 100%; margin-top: 10px; padding: 8px;">📋 Copy from last period</button>
-            </div>
-
-            <div class="notes-section">
-                <label><strong>Notes (optional)</strong></label>
-                <textarea id="notesTextarea" placeholder="Add any notes about this period..."></textarea>
-            </div>
-
-            <div class="photo-section">
-                <label><strong>Photos (optional)</strong></label>
-                <input type="file" id="photoInput" accept="image/*" multiple style="margin-top: 8px;">
-                <div class="photo-preview" id="photoPreview"></div>
             </div>
 
             <div id="quickActionsSection" style="margin-top:18px;">
@@ -901,17 +728,39 @@
         </div>
     </div>
 
-    <!-- REVIEW MODAL -->
-    <div class="modal" id="reviewModal">
-        <div class="modal-content" style="max-width: 700px;">
-            <h3 id="reviewTitle">Review</h3>
-            <div id="reviewContent" class="review-content"></div>
-            <button class="btn" onclick="closeReviewModal()" style="margin-top: 20px; width: 100%;">Close</button>
+    <!-- CHARTS MODAL -->
+    <div class="modal" id="chartsModal">
+        <div class="modal-content charts-modal-content">
+            <h3>📊 Progress Charts & Analytics</h3>
+            
+            <div class="chart-section">
+                <h4>Weekly Completion Rate Over Time</h4>
+                <div class="chart-container">
+                    <canvas id="weeklyChart" class="chart-canvas"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-section">
+                <h4>Category Performance</h4>
+                <div class="chart-container">
+                    <canvas id="categoryChart" class="chart-canvas"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-section">
+                <h4>Overall Progress Distribution</h4>
+                <div class="chart-container">
+                    <canvas id="progressChart" class="chart-canvas"></canvas>
+                </div>
+            </div>
+
+            <button class="btn" onclick="closeChartsModal()" style="width: 100%; margin-top: 10px;">Close</button>
         </div>
     </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 <script>
+    // CATEGORY DEFINITIONS
     var categories = {
         'lifestyle-health': {
             name: 'Lifestyle & Health',
@@ -949,30 +798,25 @@
     var currentResolution = null;
     var currentPeriod = null;
     var currentEntries = [];
-    var currentPhotos = [];
-    var chartInstance = null;
+    var weeklyChartInstance = null;
+    var categoryChartInstance = null;
+    var progressChartInstance = null;
 
     function loadResolutions() {
         try {
-            var raw = localStorage.getItem('resolutions');
-            console.log('Loading from localStorage:', raw);
+            var raw = localStorage.getItem('resolutions2026');
             resolutions = raw ? JSON.parse(raw) : [];
-            console.log('Loaded resolutions:', resolutions.length);
         } catch(e) {
             console.error('Load error', e);
             resolutions = [];
-            alert('Error loading data: ' + e.message);
         }
     }
 
     function saveResolutions() {
         try {
-            var jsonString = JSON.stringify(resolutions);
-            localStorage.setItem('resolutions', jsonString);
-            console.log('Saved to localStorage:', resolutions.length, 'resolutions');
+            localStorage.setItem('resolutions2026', JSON.stringify(resolutions));
         } catch(e) {
-            console.error('Save error – storage may be full', e);
-            alert('Error saving data: ' + e.message);
+            console.error('Save error', e);
         }
     }
 
@@ -1018,64 +862,12 @@
         }
 
         resolutions.push(resolution);
-        console.log('Added resolution:', resolution);
-        console.log('Total resolutions:', resolutions.length);
-        
         saveResolutions();
 
         document.getElementById('resolutionText').value = '';
         document.getElementById('goalValue').value = '';
         
         renderResolutions();
-        
-        alert('Resolution added successfully!');
-    }
-
-    function addTemplate(type) {
-        var templates = {
-            fitness: [
-                { text: 'Exercise 4 times per week', frequency: 'weekly', goal: 4 },
-                { text: 'Walk 10,000 steps daily', frequency: 'weekly', goal: 7 }
-            ],
-            learning: [
-                { text: 'Read 2 books per month', frequency: 'monthly', goal: 2 },
-                { text: 'Practice new skill 30 minutes daily', frequency: 'weekly', goal: 210 }
-            ],
-            wellness: [
-                { text: 'Meditate 5 times per week', frequency: 'weekly', goal: 5 },
-                { text: 'Sleep 8 hours nightly', frequency: 'weekly', goal: 7 },
-                { text: 'Drink 8 glasses of water daily', frequency: 'weekly', goal: 56 }
-            ],
-            nutrition: [
-                { text: 'Eat 30 fruits and vegetables per week', frequency: 'weekly', goal: 30 },
-                { text: 'Cook at home 5 times per week', frequency: 'weekly', goal: 5 }
-            ]
-        };
-
-        var items = templates[type];
-        for (var i = 0; i < items.length; i++) {
-            var item = items[i];
-            var resolution = {
-                id: Date.now() + i,
-                text: item.text,
-                frequency: item.frequency,
-                category: categorizeResolution(item.text),
-                goal: item.goal,
-                progress: {}
-            };
-
-            if (item.frequency === 'weekly') {
-                for (var w = 1; w <= 52; w++) resolution.progress['week-' + w] = null;
-            } else if (item.frequency === 'monthly') {
-                for (var m = 1; m <= 12; m++) resolution.progress['month-' + m] = null;
-            }
-
-            resolutions.push(resolution);
-        }
-
-        saveResolutions();
-        renderResolutions();
-        alert('Template added! Scroll down to see your new resolutions.');
     }
 
     function openProgressModal(resolutionId, period) {
@@ -1100,13 +892,8 @@
 
         var existing = currentResolution.progress[period];
         currentEntries = [];
-        currentPhotos = [];
-        document.getElementById('notesTextarea').value = '';
-
-        if (existing && typeof existing === 'object') {
-            if (existing.entries) currentEntries = existing.entries.slice();
-            if (existing.photos) currentPhotos = existing.photos.slice();
-            if (existing.notes) document.getElementById('notesTextarea').value = existing.notes;
+        if (existing && typeof existing === 'object' && existing.entries) {
+            currentEntries = existing.entries.slice();
         }
 
         var goal = currentResolution.goal;
@@ -1118,7 +905,6 @@
         }
 
         renderEntries();
-        renderPhotos();
         document.getElementById('progressModal').classList.add('active');
     }
 
@@ -1127,8 +913,6 @@
         currentResolution = null;
         currentPeriod = null;
         currentEntries = [];
-        currentPhotos = [];
-        document.getElementById('photoInput').value = '';
     }
 
     function addEntry() {
@@ -1167,67 +951,6 @@
         container.innerHTML = html;
     }
 
-    function copyFromLastPeriod() {
-        if (!currentResolution || !currentPeriod) return;
-        
-        var lastPeriod = null;
-        if (currentPeriod.indexOf('week-') === 0) {
-            var weekNum = parseInt(currentPeriod.split('-')[1], 10);
-            if (weekNum > 1) lastPeriod = 'week-' + (weekNum - 1);
-        } else if (currentPeriod.indexOf('month-') === 0) {
-            var monthNum = parseInt(currentPeriod.split('-')[1], 10);
-            if (monthNum > 1) lastPeriod = 'month-' + (monthNum - 1);
-        }
-
-        if (!lastPeriod) {
-            alert('No previous period to copy from!');
-            return;
-        }
-
-        var lastData = currentResolution.progress[lastPeriod];
-        if (lastData && typeof lastData === 'object' && lastData.entries) {
-            currentEntries = lastData.entries.slice();
-            renderEntries();
-            updateTallyDisplay();
-            alert('Copied ' + currentEntries.length + ' entries from last period!');
-        } else {
-            alert('No entries in the previous period to copy.');
-        }
-    }
-
-    document.getElementById('photoInput').addEventListener('change', function(e) {
-        var files = e.target.files;
-        for (var i = 0; i < files.length; i++) {
-            var reader = new FileReader();
-            reader.onload = (function(file) {
-                return function(ev) {
-                    currentPhotos.push(ev.target.result);
-                    renderPhotos();
-                };
-            })(files[i]);
-            reader.readAsDataURL(files[i]);
-        }
-    });
-
-    function renderPhotos() {
-        var container = document.getElementById('photoPreview');
-        if (currentPhotos.length === 0) {
-            container.innerHTML = '';
-            return;
-        }
-        var html = '';
-        for (var i = 0; i < currentPhotos.length; i++) {
-            html += '<div class="photo-item"><img src="' + currentPhotos[i] + '" alt="Photo">' +
-                    '<button class="photo-delete" onclick="removePhoto(' + i + ')">×</button></div>';
-        }
-        container.innerHTML = html;
-    }
-
-    function removePhoto(index) {
-        currentPhotos.splice(index, 1);
-        renderPhotos();
-    }
-
     function updateTallyDisplay() {
         var goal = currentResolution ? currentResolution.goal : 0;
         var count = currentEntries.length;
@@ -1252,14 +975,10 @@
                 value = goal;
             }
             
-            var notes = document.getElementById('notesTextarea').value.trim();
-            
             currentResolution.progress[currentPeriod] = {
                 value: value,
                 goal: goal,
                 entries: currentEntries.slice(),
-                photos: currentPhotos.slice(),
-                notes: notes || null,
                 markedComplete: type === 'completed'
             };
         } else {
@@ -1272,16 +991,12 @@
     }
 
     function saveProgress() {
-        if (currentEntries.length > 0 || currentPhotos.length > 0) {
+        if (currentEntries.length > 0) {
             var goal = currentResolution.goal;
-            var notes = document.getElementById('notesTextarea').value.trim();
-            
             currentResolution.progress[currentPeriod] = {
                 value: currentEntries.length,
                 goal: goal,
-                entries: currentEntries.slice(),
-                photos: currentPhotos.slice(),
-                notes: notes || null
+                entries: currentEntries.slice()
             };
         }
         saveResolutions();
@@ -1301,32 +1016,6 @@
         return { cls: '', display: '' };
     }
 
-    function calculateStreak(resolution) {
-        var longest = 0;
-        var current = 0;
-        var keys = Object.keys(resolution.progress).sort();
-        
-        for (var i = 0; i < keys.length; i++) {
-            var status = resolution.progress[keys[i]];
-            var isSuccess = false;
-            
-            if (status === true) isSuccess = true;
-            else if (typeof status === 'object' && status.value !== undefined) {
-                var pct = status.goal ? (status.value / status.goal) * 100 : 50;
-                if (pct >= 60) isSuccess = true;
-            }
-            
-            if (isSuccess) {
-                current++;
-                if (current > longest) longest = current;
-            } else {
-                current = 0;
-            }
-        }
-        
-        return longest;
-    }
-
     function toggleResolution(resolutionId) {
         var content = document.getElementById('content-' + resolutionId);
         var icon = document.getElementById('collapse-' + resolutionId);
@@ -1338,12 +1027,9 @@
     }
 
     function renderResolutions() {
-        console.log('Rendering resolutions. Total:', resolutions.length);
-        
         var container = document.getElementById('categoriesContainer');
         container.innerHTML = '';
 
-        // If no resolutions at all, show empty state
         if (resolutions.length === 0) {
             container.innerHTML = '<div class="empty-state">No resolutions yet. Add your first one above!</div>';
             calculateStats();
@@ -1353,7 +1039,6 @@
         var grouped = {};
         for (var i = 0; i < resolutions.length; i++) {
             var cat = resolutions[i].category;
-            console.log('Resolution', i, 'category:', cat);
             if (!grouped[cat]) grouped[cat] = [];
             grouped[cat].push(resolutions[i]);
         }
@@ -1362,50 +1047,20 @@
         var currentMonthNum = new Date().getMonth() + 1;
 
         var catKeys = Object.keys(grouped);
-        console.log('Categories to render:', catKeys);
-        
         for (var c = 0; c < catKeys.length; c++) {
             var categoryKey = catKeys[c];
             var category = categories[categoryKey];
-            
-            // Safety check - make sure category exists
-            if (!category) {
-                console.error('Category not found:', categoryKey);
-                continue;
-            }
-            
             var items = grouped[categoryKey];
-            console.log('Rendering category:', categoryKey, 'with', items.length, 'items');
-
-            var catCompleted = 0;
-            var catTotal = 0;
-            for (var i = 0; i < items.length; i++) {
-                var prog = items[i].progress;
-                var keys = Object.keys(prog);
-                for (var j = 0; j < keys.length; j++) {
-                    var s = prog[keys[j]];
-                    if (s === null || s === undefined) continue;
-                    catTotal++;
-                    if (s === true) catCompleted++;
-                    else if (typeof s === 'object' && s.value !== undefined) {
-                        if (s.goal && s.value >= s.goal) catCompleted++;
-                        else if (s.value > 0) catCompleted += 0.5;
-                    }
-                }
-            }
-            var catRate = catTotal > 0 ? Math.round((catCompleted / catTotal) * 100) : 0;
 
             var card = document.createElement('div');
             card.className = 'category-card';
 
             var html = '<div class="category-header">' +
                 '<span class="category-icon">' + category.icon + '</span>' +
-                '<h3 class="category-title">' + category.name + '</h3>' +
-                '<span class="category-stats">' + catRate + '% complete</span></div>';
+                '<h3 class="category-title">' + category.name + '</h3></div>';
 
             for (var r = 0; r < items.length; r++) {
                 var res = items[r];
-                var streak = calculateStreak(res);
                 
                 html += '<div class="resolution-item">' +
                     '<div class="resolution-header" onclick="toggleResolution(' + res.id + ')">' +
@@ -1414,7 +1069,6 @@
                     '<span class="resolution-frequency">' + res.frequency + '</span>';
 
                 if (res.goal) html += ' <span class="resolution-frequency" style="background:#8b8165;">Goal: ' + res.goal + '</span>';
-                if (streak > 0) html += ' <span class="streak-badge">🔥 ' + streak + ' streak</span>';
                 
                 html += '</div><span class="collapse-icon" id="collapse-' + res.id + '">▶</span></div>' +
                     '<div class="resolution-content" id="content-' + res.id + '">';
@@ -1433,11 +1087,8 @@
                         var display = info.display || String(w);
                         var currentClass = (w === currentWeekNum) ? ' current' : '';
                         var title = '';
-                        if (typeof status === 'object' && status) {
-                            var parts = [];
-                            if (status.entries) parts.push(status.entries.join(', '));
-                            if (status.notes) parts.push('Notes: ' + status.notes);
-                            if (parts.length > 0) title = ' title="' + escapeHtml(parts.join(' | ')) + '"';
+                        if (typeof status === 'object' && status && status.entries) {
+                            title = ' title="' + escapeHtml(status.entries.join(', ')) + '"';
                         }
                         html += '<div class="week-box ' + info.cls + currentClass + '" onclick="openProgressModal(' + res.id + ', \'week-' + w + '\')" ' + title + '>' + display + '</div>';
                     }
@@ -1458,11 +1109,8 @@
                         var display = info.display || mLabels[m - 1];
                         var currentClass = (m === currentMonthNum) ? ' current' : '';
                         var title = '';
-                        if (typeof status === 'object' && status) {
-                            var parts = [];
-                            if (status.entries) parts.push(status.entries.join(', '));
-                            if (status.notes) parts.push('Notes: ' + status.notes);
-                            if (parts.length > 0) title = ' title="' + escapeHtml(parts.join(' | ')) + '"';
+                        if (typeof status === 'object' && status && status.entries) {
+                            title = ' title="' + escapeHtml(status.entries.join(', ')) + '"';
                         }
                         html += '<div class="month-box ' + info.cls + currentClass + '" onclick="openProgressModal(' + res.id + ', \'month-' + m + '\')" ' + title + '>' + display + '</div>';
                     }
@@ -1490,10 +1138,7 @@
             container.appendChild(card);
         }
 
-        console.log('Finished rendering. Container has', container.children.length, 'category cards');
-        
         calculateStats();
-        updateCharts();
     }
 
     function deleteResolution(resolutionId) {
@@ -1513,12 +1158,8 @@
     function calculateStats() {
         var total = resolutions.length;
         var totalPossible = 0, totalCompleted = 0;
-        var maxStreak = 0;
 
         for (var i = 0; i < resolutions.length; i++) {
-            var streak = calculateStreak(resolutions[i]);
-            if (streak > maxStreak) maxStreak = streak;
-            
             var prog = resolutions[i].progress;
             var keys = Object.keys(prog);
             for (var j = 0; j < keys.length; j++) {
@@ -1539,17 +1180,27 @@
         document.getElementById('completionRate').textContent   = rate + '%';
         document.getElementById('overallProgress').style.width  = rate + '%';
         document.getElementById('currentWeek').textContent      = getCurrentWeek();
-        document.getElementById('longestStreak').textContent    = maxStreak;
+    }
+
+    function escapeHtml(str) {
+        var div = document.createElement('div');
+        div.appendChild(document.createTextNode(str));
+        return div.innerHTML;
+    }
+
+    function showChartsModal() {
+        document.getElementById('chartsModal').classList.add('active');
+        updateCharts();
+    }
+
+    function closeChartsModal() {
+        document.getElementById('chartsModal').classList.remove('active');
     }
 
     function updateCharts() {
-        if (resolutions.length === 0) {
-            document.getElementById('chartsSection').style.display = 'none';
-            return;
-        }
+        if (resolutions.length === 0) return;
 
-        document.getElementById('chartsSection').style.display = 'block';
-        
+        // CHART 1: Weekly Completion Rate Over Time
         var weeklyData = {};
         for (var w = 1; w <= 52; w++) {
             weeklyData['Week ' + w] = { completed: 0, total: 0 };
@@ -1568,238 +1219,212 @@
             }
         }
 
-        var labels = [];
-        var data = [];
+        var weekLabels = [];
+        var weekData = [];
         var keys = Object.keys(weeklyData);
         for (var i = 0; i < keys.length; i++) {
             var week = weeklyData[keys[i]];
             if (week.total > 0) {
-                labels.push(keys[i]);
-                data.push(Math.round((week.completed / week.total) * 100));
+                weekLabels.push(keys[i]);
+                weekData.push(Math.round((week.completed / week.total) * 100));
             }
         }
 
-        var ctx = document.getElementById('progressChart').getContext('2d');
-        
-        if (chartInstance) chartInstance.destroy();
-        
-        chartInstance = new Chart(ctx, {
+        var ctx1 = document.getElementById('weeklyChart').getContext('2d');
+        if (weeklyChartInstance) weeklyChartInstance.destroy();
+        weeklyChartInstance = new Chart(ctx1, {
             type: 'line',
             data: {
-                labels: labels,
+                labels: weekLabels,
                 datasets: [{
                     label: 'Weekly Completion Rate (%)',
-                    data: data,
+                    data: weekData,
                     borderColor: '#7d8f6b',
                     backgroundColor: 'rgba(125, 143, 107, 0.1)',
                     tension: 0.4,
-                    fill: true
+                    fill: true,
+                    pointRadius: 3,
+                    pointHoverRadius: 6
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                    legend: { display: true }
+                    legend: { display: true },
+                    tooltip: { 
+                        callbacks: {
+                            label: function(context) {
+                                return context.parsed.y + '% completed';
+                            }
+                        }
+                    }
                 },
                 scales: {
-                    y: { beginAtZero: true, max: 100 }
-                }
-            }
-        });
-    }
-
-    function exportData() {
-        var csv = 'Resolution,Frequency,Category,Period,Status,Value,Goal,Entries,Notes\n';
-        
-        for (var i = 0; i < resolutions.length; i++) {
-            var res = resolutions[i];
-            var keys = Object.keys(res.progress);
-            for (var j = 0; j < keys.length; j++) {
-                var period = keys[j];
-                var status = res.progress[period];
-                if (status === null || status === undefined) continue;
-                
-                var statusText = '';
-                var value = '';
-                var entries = '';
-                var notes = '';
-                
-                if (status === true) statusText = 'Completed';
-                else if (status === false) statusText = 'Missed';
-                else if (typeof status === 'object') {
-                    value = status.value || '';
-                    statusText = status.goal && status.value >= status.goal ? 'Completed' : 'Partial';
-                    entries = status.entries ? '"' + status.entries.join(', ') + '"' : '';
-                    notes = status.notes ? '"' + status.notes.replace(/"/g, '""') + '"' : '';
-                }
-                
-                csv += '"' + res.text.replace(/"/g, '""') + '",' +
-                       res.frequency + ',' +
-                       res.category + ',' +
-                       period + ',' +
-                       statusText + ',' +
-                       value + ',' +
-                       (res.goal || '') + ',' +
-                       entries + ',' +
-                       notes + '\n';
-            }
-        }
-        
-        var blob = new Blob([csv], { type: 'text/csv' });
-        var url = URL.createObjectURL(blob);
-        var a = document.createElement('a');
-        a.href = url;
-        a.download = '2026-resolutions-export.csv';
-        a.click();
-    }
-
-    function showMonthlyReview() {
-        var currentMonth = new Date().getMonth() + 1;
-        var monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-        var monthName = monthNames[currentMonth - 1];
-        
-        var html = '<h4 style="color: #6b7c59; margin-bottom: 15px;">' + monthName + ' 2026 Review</h4>';
-        
-        var totalGoals = 0;
-        var metGoals = 0;
-        var highlights = [];
-        
-        for (var i = 0; i < resolutions.length; i++) {
-            var res = resolutions[i];
-            if (res.frequency === 'monthly') {
-                var status = res.progress['month-' + currentMonth];
-                if (status !== null && status !== undefined) {
-                    totalGoals++;
-                    if (status === true) {
-                        metGoals++;
-                        highlights.push(res.text);
-                    } else if (typeof status === 'object' && status.goal && status.value >= status.goal) {
-                        metGoals++;
-                        highlights.push(res.text + ' (' + status.value + ' achieved)');
+                    y: { 
+                        beginAtZero: true, 
+                        max: 100,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
                     }
                 }
             }
-        }
-        
-        var rate = totalGoals > 0 ? Math.round((metGoals / totalGoals) * 100) : 0;
-        
-        html += '<div class="review-highlight">';
-        html += '<strong>Completion Rate:</strong> ' + rate + '% (' + metGoals + ' of ' + totalGoals + ' monthly goals)<br>';
-        html += '<strong>Status:</strong> ' + (rate >= 75 ? '🎉 Excellent!' : rate >= 50 ? '👍 Good progress' : '💪 Keep going!');
-        html += '</div>';
-        
-        if (highlights.length > 0) {
-            html += '<h4 style="margin-top: 20px; color: #6b7c59;">Highlights:</h4><ul>';
-            for (var i = 0; i < highlights.length; i++) {
-                html += '<li>' + escapeHtml(highlights[i]) + '</li>';
-            }
-            html += '</ul>';
-        }
-        
-        html += '<p style="margin-top: 20px; font-style: italic; color: #8b8165;">Keep up the great work in ' + 
-                (currentMonth < 12 ? monthNames[currentMonth] : 'the coming year') + '!</p>';
-        
-        document.getElementById('reviewTitle').textContent = 'Monthly Review';
-        document.getElementById('reviewContent').innerHTML = html;
-        document.getElementById('reviewModal').classList.add('active');
-    }
+        });
 
-    function showYearInReview() {
-        var html = '<h4 style="color: #6b7c59; margin-bottom: 15px;">Your 2026 Year in Review</h4>';
-        
-        var totalResolutions = resolutions.length;
-        var totalTracked = 0;
-        var totalCompleted = 0;
-        var bestCategory = null;
+        // CHART 2: Category Performance
         var categoryStats = {};
-        
         for (var i = 0; i < resolutions.length; i++) {
             var res = resolutions[i];
             var cat = res.category;
             
             if (!categoryStats[cat]) {
-                categoryStats[cat] = { name: categories[cat].name, icon: categories[cat].icon, tracked: 0, completed: 0 };
+                categoryStats[cat] = { 
+                    name: categories[cat].name, 
+                    icon: categories[cat].icon, 
+                    tracked: 0, 
+                    completed: 0 
+                };
             }
             
             var keys = Object.keys(res.progress);
             for (var j = 0; j < keys.length; j++) {
                 var s = res.progress[keys[j]];
                 if (s === null || s === undefined) continue;
-                totalTracked++;
                 categoryStats[cat].tracked++;
                 
                 if (s === true) {
-                    totalCompleted++;
                     categoryStats[cat].completed++;
                 } else if (typeof s === 'object' && s.goal && s.value >= s.goal) {
-                    totalCompleted++;
                     categoryStats[cat].completed++;
                 }
             }
         }
-        
-        var overallRate = totalTracked > 0 ? Math.round((totalCompleted / totalTracked) * 100) : 0;
-        
-        var bestRate = 0;
+
+        var catLabels = [];
+        var catData = [];
+        var catColors = ['#7d8f6b', '#d4756f', '#8b8165', '#a8c69f', '#c9b8a3', '#d4c896'];
         var catKeys = Object.keys(categoryStats);
         for (var i = 0; i < catKeys.length; i++) {
             var cat = categoryStats[catKeys[i]];
-            var rate = cat.tracked > 0 ? (cat.completed / cat.tracked) * 100 : 0;
-            if (rate > bestRate) {
-                bestRate = rate;
-                bestCategory = cat;
-            }
-        }
-        
-        var longestStreakValue = 0;
-        var longestStreakRes = null;
-        for (var i = 0; i < resolutions.length; i++) {
-            var streak = calculateStreak(resolutions[i]);
-            if (streak > longestStreakValue) {
-                longestStreakValue = streak;
-                longestStreakRes = resolutions[i];
-            }
-        }
-        
-        html += '<div class="review-highlight">';
-        html += '<strong>🎯 Total Resolutions:</strong> ' + totalResolutions + '<br>';
-        html += '<strong>📊 Overall Completion:</strong> ' + overallRate + '% (' + totalCompleted + '/' + totalTracked + ')<br>';
-        html += '<strong>🔥 Longest Streak:</strong> ' + longestStreakValue + ' periods';
-        if (longestStreakRes) html += ' (' + escapeHtml(longestStreakRes.text) + ')';
-        html += '<br>';
-        if (bestCategory) {
-            html += '<strong>⭐ Best Category:</strong> ' + bestCategory.icon + ' ' + bestCategory.name + 
-                    ' (' + Math.round(bestRate) + '% completion)';
-        }
-        html += '</div>';
-        
-        html += '<h4 style="margin-top: 20px; color: #6b7c59;">Category Breakdown:</h4>';
-        for (var i = 0; i < catKeys.length; i++) {
-            var cat = categoryStats[catKeys[i]];
             var rate = cat.tracked > 0 ? Math.round((cat.completed / cat.tracked) * 100) : 0;
-            html += '<div style="margin: 10px 0; padding: 10px; background: rgba(125,143,107,0.1); border-radius: 8px;">';
-            html += '<strong>' + cat.icon + ' ' + cat.name + ':</strong> ' + rate + '% (' + cat.completed + '/' + cat.tracked + ')';
-            html += '<div class="progress-bar" style="margin-top: 5px;"><div class="progress-fill" style="width: ' + rate + '%;"></div></div>';
-            html += '</div>';
+            catLabels.push(cat.icon + ' ' + cat.name);
+            catData.push(rate);
         }
-        
-        html += '<p style="margin-top: 20px; font-style: italic; color: #8b8165; text-align: center;">' +
-                '🎉 Congratulations on your growth journey in 2026! 🎉</p>';
-        
-        document.getElementById('reviewTitle').textContent = 'Year in Review';
-        document.getElementById('reviewContent').innerHTML = html;
-        document.getElementById('reviewModal').classList.add('active');
-    }
 
-    function closeReviewModal() {
-        document.getElementById('reviewModal').classList.remove('active');
-    }
+        var ctx2 = document.getElementById('categoryChart').getContext('2d');
+        if (categoryChartInstance) categoryChartInstance.destroy();
+        categoryChartInstance = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: catLabels,
+                datasets: [{
+                    label: 'Completion Rate (%)',
+                    data: catData,
+                    backgroundColor: catColors.slice(0, catData.length),
+                    borderColor: catColors.slice(0, catData.length).map(function(c) { return c; }),
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { 
+                        callbacks: {
+                            label: function(context) {
+                                return context.parsed.y + '% completed';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: { 
+                        beginAtZero: true, 
+                        max: 100,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
 
-    function escapeHtml(str) {
-        var div = document.createElement('div');
-        div.appendChild(document.createTextNode(str));
-        return div.innerHTML;
+        // CHART 3: Overall Progress Distribution
+        var totalCompleted = 0;
+        var totalPartial = 0;
+        var totalMissed = 0;
+        var totalNotStarted = 0;
+
+        for (var i = 0; i < resolutions.length; i++) {
+            var prog = resolutions[i].progress;
+            var keys = Object.keys(prog);
+            for (var j = 0; j < keys.length; j++) {
+                var s = prog[keys[j]];
+                if (s === null || s === undefined) {
+                    totalNotStarted++;
+                } else if (s === true) {
+                    totalCompleted++;
+                } else if (s === false) {
+                    totalMissed++;
+                } else if (typeof s === 'object' && s.value !== undefined) {
+                    var pct = s.goal ? (s.value / s.goal) * 100 : 50;
+                    if (pct >= 100) totalCompleted++;
+                    else if (pct >= 60) totalPartial++;
+                    else totalMissed++;
+                }
+            }
+        }
+
+        var ctx3 = document.getElementById('progressChart').getContext('2d');
+        if (progressChartInstance) progressChartInstance.destroy();
+        progressChartInstance = new Chart(ctx3, {
+            type: 'doughnut',
+            data: {
+                labels: ['Completed', 'Close', 'Missed', 'Not Started'],
+                datasets: [{
+                    data: [totalCompleted, totalPartial, totalMissed, totalNotStarted],
+                    backgroundColor: [
+                        '#a8c69f',
+                        '#d4c896',
+                        '#c9b8a3',
+                        '#e8dcc4'
+                    ],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { 
+                        position: 'bottom',
+                        labels: {
+                            padding: 15,
+                            font: {
+                                size: 13,
+                                family: 'Georgia'
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                var total = context.dataset.data.reduce(function(a, b) { return a + b; }, 0);
+                                var pct = Math.round((context.parsed / total) * 100);
+                                return context.label + ': ' + context.parsed + ' (' + pct + '%)';
+                            }
+                        }
+                    }
+                }
+            }
+        });
     }
 
     loadResolutions();
